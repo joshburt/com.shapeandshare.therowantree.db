@@ -1,0 +1,492 @@
+-- CALL therowantree.createUser('joshburt', 'joshburt@shapeandshare.com', 'a cool password');
+
+SET @username = 'joshburt';
+
+SET @user_id = (
+	SELECT ui1.user_id
+		FROM user_info ui1
+	WHERE ui1.username = @username
+);
+
+-- CALL therowantree.process_user_income(@user_id);
+CALL therowantree.processUserIncome(@user_id);
+
+
+-------------------------------------------------------------------------------------------------------------------
+-- populate the feature names
+-- INSERT INTO feature_type (feature_name) VALUES ('room'), ('outside'), ('world'), ('spaceship');
+
+-------------------------------------------------------------------------------------------------------------------
+-- INSERT INTO store_type (store_name) VALUES
+-- ('grenade')
+-- ('bayonet')
+-- ('sulphur');
+-- ('wood'),
+-- ('stone'),
+-- ('fur'),
+-- ('bait'),
+-- ('teeth'),
+-- ('meat'),
+-- ('scales'),
+-- ('cloth'),
+-- ('charm'),
+-- ('gems'),
+-- ('coins'),
+-- ('seed'),
+-- ('crops'),
+-- ('leather'),
+-- ('cured meat'),
+-- ('compass'),
+-- ('medicine'),
+-- ('torch'),
+-- ('meatpie'),
+-- ('bone spear'),
+-- ('waterskin'),
+-- ('rucksack'),
+-- ('leather armour'),
+-- ('iron'),
+-- ('cask'),
+-- ('iron sword'),
+-- ('wagon'),
+-- ('iron armour'),
+-- ('steel'),
+-- ('coal'),
+-- ('water tank'),
+-- ('convoy'),
+-- ('steel armour'),
+-- ('steel sword'),
+-- ('rifle'),
+-- ('bullets'),
+-- ('alien alloy'),
+-- ('bolas'),
+-- ('energy cell'),
+-- ('laser rifle');
+
+
+-------------------------------------------------------------------------------------------------------------------
+-- INSERT INTO perk_type (perk_name, perk_description, perk_notify) VALUES
+-- ('boxer', 'punches do more damage', 'learned to throw punches with purpose'),
+-- ('martial artist', 'punches do even more damage.', 'learned to fight quite effectively without weapons'),
+-- ('unarmed master', 'punch twice as fast, and with even more force', 'learned to strike faster without weapons'),
+-- ('barbarian', 'melee weapons deal more damage', 'learned to swing weapons with force'),
+-- ('slow metabolism', 'go twice as far without eating', 'learned how to ignore the hunger'),
+-- ('desert rat', 'go twice as far without drinking', 'learned to love the dry air'),
+-- ('evasive', 'dodge attacks more effectively', 'learned to be where they are not'),
+-- ('precise', 'land blows more often', 'learned to predict their movement'),
+-- ('scout', 'see farther', 'learned to look ahead'),
+-- ('stealthy', 'better avoid conflict in the wild', 'learned how not to be seen');
+
+
+-------------------------------------------------------------------------------------------------------------------
+-- INSERT INTO income_source_type (income_source_name) VALUES
+-- ('gatherer'),
+-- ('hunter'),
+-- ('trapper'),
+-- ('farmer'),
+-- ('tanner'),
+-- ('charcutier'),
+-- ('iron miner'),
+-- ('coal miner'),
+-- ('sulphur miner'),
+-- ('steelworker'),
+-- ('armourer');
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------
+-- 
+-- SET @source_name = 'gatherer';
+-- SET @store_name = 'wood';
+-- SET @amount = 1;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- SET @store_name = 'stone';
+-- SET @amount = 1;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- 
+-- 
+-- SET @source_name = 'hunter';
+-- SET @store_name = 'fur';
+-- SET @amount = 0.5;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- SET @store_name = 'meat';
+-- SET @amount = 0.5;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- 
+-- 
+-- 
+-- SET @source_name = 'trapper';
+-- SET @store_name = 'meat';
+-- SET @amount = -1;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- SET @store_name = 'bait';
+-- SET @amount = 1;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- 
+-- 
+-- 
+-- 
+-- SET @source_name = 'farmer';
+-- SET @store_name = 'meat';
+-- SET @amount = -1;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- SET @store_name = 'fur';
+-- SET @amount = -1;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- SET @store_name = 'seed';
+-- SET @amount = -1;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- SET @store_name = 'crops';
+-- SET @amount = 3;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- 
+-- 
+-- 
+-- 
+-- 
+-- SET @source_name = 'tanner';
+-- SET @store_name = 'fur';
+-- SET @amount = -5;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- SET @store_name = 'leather';
+-- SET @amount = 1;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- 
+-- 
+-- 
+-- 
+-- 
+-- SET @source_name = 'charcutier';
+-- SET @store_name = 'meat';
+-- SET @amount = -5;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- SET @store_name = 'wood';
+-- SET @amount = -5;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- SET @store_name = 'cured meat';
+-- SET @amount = 1;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- 
+-- 
+-- 
+-- SET @source_name = 'iron miner';
+-- SET @store_name = 'cured meat';
+-- SET @amount = -1;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- SET @store_name = 'iron';
+-- SET @amount = 1;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+ -- 	(@amount)
+-- );
+-- 
+-- 
+-- 
+-- 
+-- SET @source_name = 'coal miner';
+-- SET @store_name = 'cured meat';
+-- SET @amount = -1;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- SET @store_name = 'coal';
+-- SET @amount = 1;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- 
+-- 
+-- 
+-- 
+-- 
+-- SET @source_name = 'sulphur miner';
+-- SET @store_name = 'cured meat';
+-- SET @amount = -1;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- SET @store_name = 'sulphur';
+-- SET @amount = 1;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- 
+-- 
+-- 
+-- 
+-- 
+-- SET @source_name = 'steelworker';
+-- SET @store_name = 'iron';
+-- SET @amount = -1;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- SET @store_name = 'coal';
+-- SET @amount = -1;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- SET @store_name = 'steel';
+-- SET @amount = 1;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- 
+-- 
+-- 
+-- 
+-- SET @source_name = 'armourer';
+-- SET @store_name = 'steel';
+-- SET @amount = -1;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- SET @store_name = 'sulphur';
+-- SET @amount = -1;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- SET @store_name = 'bullets';
+-- SET @amount = 1;
+-- INSERT INTO income_source (income_source_id, store_id, amount) VALUES
+-- (
+-- 	(SELECT ist1.income_source_id FROM income_source_type ist1 WHERE ist1.income_source_name = @source_name),
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(@amount)
+-- );
+-- 
+-- 
+-- 
+-------------------------------------------------------------------------------------------------------------------
+-- Report
+-- SELECT ist1.income_source_name, st1.store_name,  is1.amount
+-- 	FROM income_source_type ist1
+-- JOIN income_source is1
+-- 	ON ist1.income_source_id = is1.income_source_id
+-- JOIN store_type st1
+-- 	ON st1.store_id = is1.store_id
+-------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+-- SET @store_name = 'fur';
+-- SET @rollUnder = 0.5;
+-- SET @message = 'scraps of fur';
+-- INSERT INTO trapdrop (store_id, roll_under, message) VALUES
+-- (
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(SELECT @rollUnder),
+-- 	(SELECT @message)
+-- );
+-- 
+-- 
+-- SET @store_name = 'meat';
+-- SET @rollUnder = 0.75;
+-- SET @message = 'bits of meat';
+-- INSERT INTO trapdrop (store_id, roll_under, message) VALUES
+-- (
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(SELECT @rollUnder),
+-- 	(SELECT @message)
+-- );
+-- 
+-- 
+-- SET @store_name = 'seed';
+-- SET @rollUnder = 0.75;
+-- SET @message = 'seed';
+-- INSERT INTO trapdrop (store_id, roll_under, message) VALUES
+-- (
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(SELECT @rollUnder),
+-- 	(SELECT @message)
+-- );
+-- 
+-- 
+-- SET @store_name = 'scales';
+-- SET @rollUnder = 0.85;
+-- SET @message = 'strange scales';
+-- INSERT INTO trapdrop (store_id, roll_under, message) VALUES
+-- (
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(SELECT @rollUnder),
+-- 	(SELECT @message)
+-- );
+-- 
+-- 
+-- SET @store_name = 'teeth';
+-- SET @rollUnder = 0.93;
+-- SET @message = 'scattered teeth';
+-- INSERT INTO trapdrop (store_id, roll_under, message) VALUES
+-- (
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(SELECT @rollUnder),
+-- 	(SELECT @message)
+-- );
+-- 
+-- 
+-- SET @store_name = 'cloth';
+-- SET @rollUnder = 0.995;
+-- SET @message = 'tattered cloth';
+-- INSERT INTO trapdrop (store_id, roll_under, message) VALUES
+-- (
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(SELECT @rollUnder),
+-- 	(SELECT @message)
+-- );
+-- 
+-- 
+-- SET @store_name = 'charm';
+-- SET @rollUnder = 1.0;
+-- SET @message = 'a crudely made charm';
+-- INSERT INTO trapdrop (store_id, roll_under, message) VALUES
+-- (
+-- 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
+-- 	(SELECT @rollUnder),
+-- 	(SELECT @message)
+-- );
+
+
+-- REPORT --
+-- SELECT td1.roll_under, st1.store_name, td1.message
+-- 	FROM trapdrop td1
+-- JOIN store_type st1
+-- 	ON st1.store_id = td1.store_id;
+-- 
+
