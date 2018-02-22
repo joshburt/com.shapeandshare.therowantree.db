@@ -5,4 +5,4 @@ CREATE TABLE `perk_type` (
   `perk_notify` varchar(2048) DEFAULT NULL,
   PRIMARY KEY (`perk_id`),
   UNIQUE KEY `perk_name_UNIQUE` (`perk_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;

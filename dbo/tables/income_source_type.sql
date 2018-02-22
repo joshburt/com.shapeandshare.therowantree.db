@@ -5,4 +5,4 @@ CREATE TABLE `income_source_type` (
   PRIMARY KEY (`income_source_id`),
   UNIQUE KEY `income_source_id_UNIQUE` (`income_source_id`),
   UNIQUE KEY `income_source_name_UNIQUE` (`income_source_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;

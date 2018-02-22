@@ -4,4 +4,4 @@ CREATE TABLE `store_type` (
   `store_description` varchar(2048) DEFAULT NULL,
   PRIMARY KEY (`store_id`),
   UNIQUE KEY `store_name_UNIQUE` (`store_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;

@@ -4,4 +4,4 @@ CREATE TABLE `feature_type` (
   PRIMARY KEY (`feature_id`),
   UNIQUE KEY `feature_id_UNIQUE` (`feature_id`),
   UNIQUE KEY `feature_name_UNIQUE` (`feature_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
