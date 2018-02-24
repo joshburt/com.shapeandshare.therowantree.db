@@ -8,13 +8,39 @@ SET @user_id = (
 	WHERE ui1.username = @username
 );
 
-SET @user_guid = (
-	SELECT guid FROM user WHERE user_id=@user_id
-);
+-- SELECT ui1.*, is1.*, ist1.*, st1.*
+-- SELECT ist1.income_source_name, ist1.income_source_description, st1.store_name, st1.store_description, is1.amount
+-- 	FROM user_income ui1
+-- JOIN income_source is1
+-- 	ON  is1.income_source_id = ui1.income_source_id
+-- JOIN income_source_type ist1
+-- 	ON ist1.income_source_id = is1.income_source_id
+-- JOIN store_type st1
+-- 	ON st1.store_id = is1.store_id
+-- WHERE ui1.user_id=@user_id;
+
+
+SELECT ui1.amount, ist1.income_source_name, ist1.income_source_description
+	FROM user_income ui1
+JOIN income_source_type ist1
+	ON ist1.income_source_id = ui1.income_source_id
+JOIN user u1
+	ON u1.user_id = ui1.user_id
+WHERE u1.guid = 'd7ea6c9e-14de-11e8-b845-b3b77b42da81';   
+
+
+
+
+-- SET @user_guid = (
+-- 	SELECT guid FROM user WHERE user_id=@user_id
+-- );
+
+
 -- CALL getUserActivityStateByGUID(@user_guid);
 
-CALL getUserActivityStateByGUID('d7ea6c9e-14de-11e8-b845-b3b77b42da81', @active);
-SELECT @active;
+-- SET @active = false;
+-- CALL getUserActivityStateByGUID('d7ea6c9e-14de-11e8-b845-b3b77b42da81', @active);
+-- SELECT @active;
 
 
 -- CALL therowantree.process_user_income(@user_id);
