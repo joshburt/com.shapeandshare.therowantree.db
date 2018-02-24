@@ -8,11 +8,23 @@ SET @user_id = (
 	WHERE ui1.username = @username
 );
 
+SET @user_guid = (
+	SELECT guid FROM user WHERE user_id=@user_id
+);
+-- CALL getUserActivityStateByGUID(@user_guid);
+
+CALL getUserActivityStateByGUID('d7ea6c9e-14de-11e8-b845-b3b77b42da81', @active);
+SELECT @active;
+
+
 -- CALL therowantree.process_user_income(@user_id);
-CALL therowantree.processUserIncome(@user_id);
+-- CALL therowantree.processUserIncome(@user_id);
 
+-- CALL setUserActive(@user_id);
+-- CALL applyTimeQuantum();
+	-- CALL setUserInActive(@user_id);
 
--------------------------------------------------------------------------------------------------------------------
+	-------------------------------------------------------------------------------------------------------------------
 -- populate the feature names
 -- INSERT INTO feature_type (feature_name) VALUES ('room'), ('outside'), ('world'), ('spaceship');
 
