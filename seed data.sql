@@ -8,6 +8,25 @@ SET @user_id = (
 	WHERE ui1.username = @username
 );
 
+
+DELETE	FROM store
+WHERE user_id = @user_id;
+
+-- SELECT amount INTO currentAmount
+-- 	FROM store
+-- WHERE user_id = target_user_id
+-- 	AND store_id = target_store_id;
+
+-- CALL processUserIncome(@user_id);
+
+-- SELECT income_source_id, amount FROM user_income where user_id = @user_id;
+-- CALL deltaUserIncomeBySource(@user_id , 1);
+-- SELECT store_id, amount FROM income_source WHERE income_source_id = 1;
+
+
+-- CALL deltaUserIncomeBySource(@user_id, 0);
+-- CALL deltaUserStore(@user_id, 2, 100);
+
 -- SELECT ui1.*, is1.*, ist1.*, st1.*
 -- SELECT ist1.income_source_name, ist1.income_source_description, st1.store_name, st1.store_description, is1.amount
 -- 	FROM user_income ui1
@@ -19,17 +38,26 @@ SET @user_id = (
 -- 	ON st1.store_id = is1.store_id
 -- WHERE ui1.user_id=@user_id;
 
+-- CALL therowantree.applyTimeQuantum;
 
-SELECT ui1.amount, ist1.income_source_name, ist1.income_source_description
-	FROM user_income ui1
-JOIN income_source_type ist1
-	ON ist1.income_source_id = ui1.income_source_id
-JOIN user u1
-	ON u1.user_id = ui1.user_id
-WHERE u1.guid = 'd7ea6c9e-14de-11e8-b845-b3b77b42da81';   
+--  SELECT ui1.amount, ist1.income_source_name, ist1.income_source_description
+-- 	FROM user_income ui1
+-- JOIN income_source_type ist1
+-- 	ON ist1.income_source_id = ui1.income_source_id
+-- JOIN user u1
+-- 	ON u1.user_id = ui1.user_id
+-- WHERE u1.guid = 'd7ea6c9e-14de-11e8-b845-b3b77b42da81';   
 
+-- CALL therowantree.processUserIncome(@user_id);
 
+-- SET GLOBAL event_scheduler = ON;
 
+-- DROP EVENT WheelOfTime;
+-- CREATE EVENT WheelOfTime
+-- 	ON SCHEDULE EVERY 1 SECOND
+-- 	DO CALL therowantree.applyTimeQuantum;
+
+-- CALL applyTimeQuantum();
 
 -- SET @user_guid = (
 -- 	SELECT guid FROM user WHERE user_id=@user_id

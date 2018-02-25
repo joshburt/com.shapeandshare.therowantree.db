@@ -1,5 +1,5 @@
 CREATE DEFINER=`root`@`localhost` PROCEDURE `processUserIncome`(
-	IN `userID` INT(11)
+	IN target_user_id INT(11)
 )
 BEGIN
 	-- get set of user_income entries for user
@@ -14,7 +14,7 @@ BEGIN
 		-- for amount x income_source_id loop over
 	DECLARE done INT DEFAULT FALSE;
 	DECLARE income_sources_cursor CURSOR FOR 
-		SELECT income_source_id, amount FROM user_income where user_id = userID;
+		SELECT income_source_id, amount FROM user_income where user_id = target_user_id;
 	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
     
     OPEN income_sources_cursor;
@@ -27,7 +27,7 @@ BEGIN
         BEGIN
 			DECLARE counter INT DEFAULT 0;
             WHILE counter < _amount DO
-                CALL deltaUserIncomeBySource(userID, _income_source_id);
+                CALL deltaUserIncomeBySource(target_user_id, _income_source_id);
                 
                 SET counter = counter + 1;
             END WHILE;

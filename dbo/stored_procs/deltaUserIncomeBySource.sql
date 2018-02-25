@@ -1,6 +1,6 @@
 CREATE DEFINER=`root`@`localhost` PROCEDURE `deltaUserIncomeBySource`(
-IN `user_id` INT(11), 
-IN `income_source_id` INT(11)
+IN target_user_id INT(11), 
+IN target_income_source_id INT(11)
 )
 BEGIN
 	-- SELECT user_id, income_source_id;
@@ -12,7 +12,7 @@ BEGIN
 	DECLARE _amount FLOAT;
 	DECLARE done INT DEFAULT FALSE;
 	DECLARE income_cursor CURSOR FOR 
-		SELECT store_id, amount FROM income_source WHERE income_source_id=income_source_id;
+		SELECT store_id, amount FROM income_source WHERE income_source_id = target_income_source_id;
 	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;    
     
     OPEN income_cursor;
@@ -24,7 +24,7 @@ BEGIN
 		END IF;
         
 		-- cotext, for user, for income source, for each store of it,
-		IF !canDeltaStore(user_id, _store_id, _amount) THEN
+		IF !canDeltaStore(target_user_id, _store_id, _amount) THEN
 			SET incomeFlag = FALSE;
 		END IF;
     END LOOP;
@@ -35,7 +35,7 @@ BEGIN
 		BEGIN
 			DECLARE done2 INT DEFAULT FALSE;
 			DECLARE income_cursor_two CURSOR FOR 
-				SELECT store_id, amount FROM income_source WHERE income_source_id=income_source_id;
+				SELECT store_id, amount FROM income_source WHERE income_source_id=target_income_source_id;
 			DECLARE CONTINUE HANDLER FOR NOT FOUND SET done2 = TRUE;                           
 			
 			OPEN income_cursor_two;
@@ -45,7 +45,7 @@ BEGIN
 				IF done2 THEN
 					LEAVE read_loop2;
 				END IF;
-				CALL deltaUserStore(user_id, _store_id, _amount);
+				CALL deltaUserStore(target_user_id, _store_id, _amount);
 			END LOOP;
 			CLOSE income_cursor_two;
 		END;
