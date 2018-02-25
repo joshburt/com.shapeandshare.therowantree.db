@@ -10,5 +10,8 @@ BEGIN
 		IF (SELECT COUNT(*) FROM user_info WHERE user_id = @user_id) = 0 THEN
 			INSERT INTO user_game_state (user_id) VALUES (@user_id);
         END IF;
+		IF (SELECT COUNT(*) FROM feature WHERE user_id = @user_id) = 0 THEN
+			INSERT INTO feature (user_id) VALUES (@user_id);
+        END IF;
 	COMMIT;
 END
