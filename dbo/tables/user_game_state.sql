@@ -3,6 +3,8 @@ CREATE TABLE `user_game_state` (
   `active_feature` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`user_id`),
   KEY `fk_feature_id_feature_idx` (`active_feature`),
+  KEY `fk_1_idx` (`user_id`,`active_feature`),
   CONSTRAINT `fk_feature_id_feature_type_user_state` FOREIGN KEY (`active_feature`) REFERENCES `feature_type` (`feature_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_must_discover_feature_before_active` FOREIGN KEY (`user_id`, `active_feature`) REFERENCES `feature` (`user_id`, `feature_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_id_user_user_state` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
