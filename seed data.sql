@@ -8,9 +8,38 @@ SET @user_id = (
 	WHERE ui1.username = @username
 );
 
+-- SET @guid = (SELECT UUID());
+-- CALL therowantree.createUserByGUID(@guid);
+-- CALL therowantree.deleteUserByGUID(@guid);
+-- CALL therowantree.deleteUserByGUID('71b2b730-1a54-11e8-b445-60f29d3d5700');
+-- CALL therowantree.createUser();
+-- CALL therowantree.deleteUserByGUID('251f980a-1a56-11e8-b445-60f29d3d5700');
 
-DELETE	FROM store
-WHERE user_id = @user_id;
+-- DELETE FROM user_income
+-- 	WHERE user_id = @user_id;
+-- DELETE FROM store
+-- 	WHERE user_id = @user_id;
+-- DELETE FROM user_game_state
+-- 	WHERE user_id = @user_id;
+-- DELETE FROM user_info
+-- 	WHERE user_id = @user_id;
+-- DELETE FROM user
+-- 	WHERE user_id = '19';
+
+
+
+-- DELETE	FROM store
+-- WHERE user_id = @user_id;
+
+-- INSERT INTO user_income (user_id, income_source_id, amount) VALUES (
+-- 	@user_id,
+--     15,
+ --    1
+-- );
+-- UPDATE user_income
+-- 	SET amount = 60
+-- WHERE user_id = @user_id
+-- 	AND income_source_id = 2;
 
 -- SELECT amount INTO currentAmount
 -- 	FROM store

@@ -1,8 +1,8 @@
 CREATE TABLE `user_info` (
   `user_id` int(11) NOT NULL,
-  `username` varchar(16) DEFAULT NULL,
+  `username` varchar(16) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `password` varchar(64) DEFAULT NULL,
+  `password` varchar(64) NOT NULL,
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_id_UNIQUE` (`user_id`),
