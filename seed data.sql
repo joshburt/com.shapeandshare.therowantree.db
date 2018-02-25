@@ -1,13 +1,35 @@
 -- CALL therowantree.createUser('joshburt', 'joshburt@shapeandshare.com', 'a cool password');
 
-SET @username = 'joshburt';
+-- SET @username = 'joshburt';
 
-SET @user_id = (
-	SELECT ui1.user_id
-		FROM user_info ui1
-	WHERE ui1.username = @username
-);
+-- SET @user_id = (
+-- 	SELECT ui1.user_id
+-- 		FROM user_info ui1
+-- 	WHERE ui1.username = @username
+-- );
 
+
+SET @guid = '7db363d2-1a7b-11e8-b445-60f29d3d5700';
+SET @user_id = (SELECT user_id FROM user WHERE guid = @guid );
+
+-- INSERT INTO feature (user_id, feature_id) VALUES
+-- 	(@user_id, 2);
+
+-- INSERT INTO user_income (user_id, income_source_id, amount) VALUES
+-- 	(@user_id, 1, 10);
+
+-- CALL processUserIncome(@user_id);
+
+
+
+-- CALL therowantree.setUserActiveByGUID(@user_id);
+-- CALL therowantree.setUserInactiveByGUID(@guid);
+
+SELECT *
+ 	FROM user
+ WHERE user_id = @user_id;
+ 
+ 
 -- SET @guid = (SELECT UUID());
 -- CALL therowantree.createUserByGUID(@guid);
 -- CALL therowantree.deleteUserByGUID(@guid);
