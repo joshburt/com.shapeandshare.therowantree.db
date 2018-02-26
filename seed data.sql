@@ -9,8 +9,39 @@
 -- );
 
 
-SET @guid = '7db363d2-1a7b-11e8-b445-60f29d3d5700';
-SET @user_id = (SELECT user_id FROM user WHERE guid = @guid );
+-- SET @guid = '7db363d2-1a7b-11e8-b445-60f29d3d5700';
+-- SET @user_id = (SELECT user_id FROM user WHERE guid = @guid );
+
+-- CALL therowantree.deleteTransientUsers();
+
+-- DELETE ugs1
+-- 	FROM user_game_state ugs1
+-- WHERE ugs1.user_id is not null;
+-- 
+-- DELETE f1
+-- 	FROM feature f1
+-- 	WHERE f1.user_id is not null;
+-- 	
+-- DELETE p1 
+-- 	FROM perk p1
+-- 	WHERE p1.user_id is not null;
+-- 
+-- DELETE s1 
+-- 	FROM store s1
+-- WHERE s1.user_id is not null;
+-- 
+-- DELETE ui1 
+-- 	FROM user_income ui1
+-- WHERE ui1.user_id is not null;
+-- 
+-- DELETE ui2
+-- 	FROM user_info ui2
+-- WHERE ui2.user_id is not null;
+-- 
+-- DELETE u1
+-- 	FROM user u1 
+-- WHERE u1.user_id is not null;
+
 
 -- INSERT INTO feature (user_id, feature_id) VALUES
 -- 	(@user_id, 2);
@@ -25,9 +56,9 @@ SET @user_id = (SELECT user_id FROM user WHERE guid = @guid );
 -- CALL therowantree.setUserActiveByGUID(@user_id);
 -- CALL therowantree.setUserInactiveByGUID(@guid);
 
-SELECT *
- 	FROM user
- WHERE user_id = @user_id;
+-- SELECT *
+--  	FROM user
+--  WHERE user_id = @user_id;
  
  
 -- SET @guid = (SELECT UUID());
@@ -107,6 +138,12 @@ SELECT *
 -- CREATE EVENT WheelOfTime
 -- 	ON SCHEDULE EVERY 1 SECOND
 -- 	DO CALL therowantree.applyTimeQuantum;
+
+-- DROP EVENT CleanUpTemporaryUsers;
+-- CREATE EVENT CleanUpTemporaryUsers
+-- 	ON SCHEDULE EVERY 1 DAY
+ --    DO CALL therowantree.CleanUpTemporaryUsers;
+
 
 -- CALL applyTimeQuantum();
 
