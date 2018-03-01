@@ -38,8 +38,8 @@ BEGIN
 				SELECT store_id, amount FROM income_source WHERE income_source_id=target_income_source_id;
 			DECLARE CONTINUE HANDLER FOR NOT FOUND SET done2 = TRUE;                           
 			
+            START TRANSACTION;
 			OPEN income_cursor_two;
-			
 			read_loop2: LOOP
 				FETCH income_cursor_two INTO _store_id, _amount;
 				IF done2 THEN
@@ -48,6 +48,7 @@ BEGIN
 				CALL deltaUserStore(target_user_id, _store_id, _amount);
 			END LOOP;
 			CLOSE income_cursor_two;
+            COMMIT;
 		END;
 	END IF;
     
