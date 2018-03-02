@@ -1,3 +1,7 @@
+-- SHOW EVENTS;
+SET GLOBAL event_scheduler = ON;
+
+
 SET @scales = (SELECT store_id FROM store_type WHERE store_name = 'scales');
 SET @coins = (SELECT store_id FROM store_type WHERE store_name = 'coins');
 SET @fur = (SELECT store_id FROM store_type WHERE store_name = 'fur');
@@ -723,11 +727,16 @@ SET @compass = (SELECT store_id FROM store_type WHERE store_name = 'compass');
 
 
 SET @my_guid = '870a7d28-1cef-11e8-b445-60f29d3d5700';
+-- SET @my_guid = '7db363d2-1a7b-11e8-b445-60f29d3d5700';
 SET @me = (SELECT user_id FROM user WHERE guid = @my_guid);
+-- CALL therowantree.increaseUserPopulationByGUID(@my_guid);
+-- CALL therowantree.getUserPopulationByGUID(@me);
+CALL therowantree.deltaUserIncomeByGUID(@my_guid, 3,-1);
+-- CALL getUserIncomeByGUID(@my_guid);
 
--- DELETE
--- 	FROM user_income
--- WHERE user_id = @me;
+-- INSERT INTO user_income (user_id, income_source_id, amount) VALUES
+-- (@me, 3, 0);
+
 
 -- INSERT INTO user_income (user_id, income_source_id, amount) VALUES
 --  (
@@ -743,5 +752,6 @@ SET @me = (SELECT user_id FROM user WHERE guid = @my_guid);
 
 
 
-CALL peformMerchantTransformByGUID(@my_guid, @fur);
+-- CALL peformMerchantTransformByGUID(@my_guid, @fur);
 
+-- CALL applyTimeQuantum();
