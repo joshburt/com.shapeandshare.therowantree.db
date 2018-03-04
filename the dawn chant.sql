@@ -737,6 +737,12 @@ SET @me = (SELECT user_id FROM user WHERE guid = @my_guid);
 -- CALL therowantree.deltaUserIncomeByGUID(@my_guid, 3,-1);
 -- CALL getUserIncomeByGUID(@my_guid);
 
+
+-- CALL transportUserByGUID(@my_guid, 'outside');
+
+-- INSERT INTO feature (user_id, feature_id) VALUES
+-- (@me, (SELECT feature_id FROM feature_type WHERE feature_name = 'outside'));
+
 -- CALL getUserMerchantTransformsByGUID(@my_guid);
 
 -- SELECT DISTINCT st1.store_name
