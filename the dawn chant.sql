@@ -295,6 +295,9 @@ SET @compass = (SELECT store_id FROM store_type WHERE store_name = 'compass');
 -- ('bolas'),
 -- ('energy cell'),
 -- ('laser rifle');
+-- INSERT INTO feature_type (feature_name) VALUES ('encounters');
+-- INSERT INTO feature_type (feature_name) VALUES ('global');
+-- INSERT INTO feature_type (feature_name) VALUES ('setpieces');
 
 
 -------------------------------------------------------------------------------------------------------------------
@@ -727,15 +730,42 @@ SET @compass = (SELECT store_id FROM store_type WHERE store_name = 'compass');
 
 
 SET @my_guid = '870a7d28-1cef-11e8-b445-60f29d3d5700';
--- SET @my_guid = '7db363d2-1a7b-11e8-b445-60f29d3d5700';
+-- SET @my_guid = '89010174-1f01-11e8-a100-467facde5613';
 SET @me = (SELECT user_id FROM user WHERE guid = @my_guid);
 -- CALL therowantree.increaseUserPopulationByGUID(@my_guid);
 -- CALL therowantree.getUserPopulationByGUID(@me);
-CALL therowantree.deltaUserIncomeByGUID(@my_guid, 3,-1);
+-- CALL therowantree.deltaUserIncomeByGUID(@my_guid, 3,-1);
 -- CALL getUserIncomeByGUID(@my_guid);
 
+-- CALL getUserMerchantTransformsByGUID(@my_guid);
+
+-- SELECT DISTINCT st1.store_name
+-- 	FROM user u1
+-- JOIN store s1
+-- 	ON u1.user_id = s1.user_id
+-- JOIN merchant_transforms mt1
+-- 	ON s1.store_id = mt1.to_store_id
+-- JOIN store_type st1
+-- 	ON st1.store_id = s1.store_id
+-- WHERE u1.guid = @my_guid
+-- 	AND u1.active > 0
+
+
+-- SET @to_store_name='stone';
+-- CALL peformMerchantTransformByGUID(@my_guid, 'stone');
+
+-- SELECT st2_from.store_id, mt1.amount
+-- 	FROM merchant_transforms mt1
+-- JOIN store_type st1_to
+-- 	ON st1_to.store_id = mt1.to_store_id
+-- JOIN store_type st2_from
+-- 	ON st2_from.store_id = mt1.from_store_id
+-- WHERE st1_to.store_name = @to_store_name
+-- 	ORDER BY st1_to.store_name;
+
+
 -- INSERT INTO user_income (user_id, income_source_id, amount) VALUES
--- (@me, 3, 0);
+-- (@me, 4, 0);
 
 
 -- INSERT INTO user_income (user_id, income_source_id, amount) VALUES
