@@ -19,6 +19,7 @@ BEGIN
 					 AND ft1.feature_name = target_feature_name
                  
             )
-		WHERE u1.guid = target_guid;
+		WHERE u1.guid = target_guid
+			AND u1.active > 0;
 	COMMIT;
 END
