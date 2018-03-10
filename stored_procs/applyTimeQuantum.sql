@@ -4,7 +4,7 @@ BEGIN
     DECLARE _user_id INT(11);
     DECLARE done INT DEFAULT FALSE;
     DECLARE user_cursor CURSOR FOR 
-		SELECT user_id from user where active = TRUE;
+		SELECT user_id from user where active = 1;
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
     
 	OPEN user_cursor;
