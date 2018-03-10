@@ -1,4 +1,4 @@
-CREATE PROCEDURE `getUserActiveFeratureByGUID` (
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserActiveFeratureByGUID`(
 	IN target_guid VARCHAR(255)
 )
 BEGIN

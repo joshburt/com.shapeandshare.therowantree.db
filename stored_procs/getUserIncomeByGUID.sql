@@ -1,4 +1,4 @@
-CREATE PROCEDURE `getUserIncomeByGUID` (
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserIncomeByGUID`(
 	IN target_guid VARCHAR(255)
 )
 BEGIN

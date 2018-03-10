@@ -1,4 +1,4 @@
-CREATE PROCEDURE `createUser` ()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `createUser`()
 BEGIN
 	SET @new_guid = (SELECT UUID());
     CALL createUserByGUID(@new_guid);
