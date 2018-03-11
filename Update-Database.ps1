@@ -7,7 +7,7 @@
 
 $server = 'localhost'
 $username = 'root'
-$password = '***REMOVED***'
+$password = ''
 $database = 'dev_therowantree'
 
 
