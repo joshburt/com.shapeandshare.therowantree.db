@@ -65,9 +65,9 @@ INSERT INTO merchant_transforms (to_store_id, from_store_id, amount) VALUES (@co
 
 COMMIT;
 
--------------------------------------------------------------------------------
----- Report ----
--------------------------------------------------------------------------------
+-- ----------------------------------------------------------------------------
+-- Report --
+-- ----------------------------------------------------------------------------
 SELECT st1_to.store_name, st2_from.store_name, mt1.amount
 	FROM merchant_transforms mt1
 JOIN store_type st1_to
