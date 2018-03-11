@@ -24,8 +24,14 @@ Get-ChildItem -Path ./tables | ForEach-Object -Process {
 Write-Output('Creating Functions..')
 Get-ChildItem -Path ./functions | ForEach-Object -Process {
     $final_cmd = "$mysql_cmd -e ""source $($_.FullName)"" "
-    Write-Output $final_cmd
+    # Write-Output $final_cmd
     Invoke-Expression $final_cmd
 }
 
 
+Write-Output('Creating Stored Procedures..')
+Get-ChildItem -Path ./stored_procs | ForEach-Object -Process {
+    $final_cmd = "$mysql_cmd -e ""source $($_.FullName)"" "
+    # Write-Output $final_cmd
+    Invoke-Expression $final_cmd
+}
