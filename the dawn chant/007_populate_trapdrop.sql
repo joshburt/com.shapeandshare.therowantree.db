@@ -1,4 +1,4 @@
-
+START TRANSACTION;
 
 SET @store_name = 'fur';
 SET @rollUnder = 0.5;
@@ -76,9 +76,11 @@ INSERT INTO trapdrop (store_id, roll_under, message) VALUES
 	(SELECT @message)
 );
 
-----------------------------------------------------------------
+COMMIT;
+
+-------------------------------------------------------------------------------
 -- REPORT --
-----------------------------------------------------------------
+-------------------------------------------------------------------------------
 SELECT td1.roll_under, st1.store_name, td1.message
 	FROM trapdrop td1
 JOIN store_type st1

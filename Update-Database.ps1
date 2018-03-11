@@ -35,3 +35,10 @@ Get-ChildItem -Path ./stored_procs | ForEach-Object -Process {
     # Write-Output $final_cmd
     Invoke-Expression $final_cmd
 }
+
+Write-Output('Adding seed data..')
+Get-ChildItem -Path './the dawn chant' -Filter *.sql | ForEach-Object -Process {
+    $final_cmd = "$mysql_cmd -e ""source $($_.FullName)"" "
+    # Write-Output $final_cmd
+    Invoke-Expression $final_cmd
+}
