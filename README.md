@@ -26,10 +26,16 @@ Requirements
 
 Deploying
 ---------
+The scripts to create the database require PowerShell 6.0+ (pwsh) and MySQL command line tool (mysql) to be present on the system.
 
-CmdLet
+Example invokcation of the database creation script
 ```
-Update-Database
+/$ pwsh 
+PS> Import-Module ./Update-TRTDatabase.psd1
+PS> $server = 'localhost'
+PS> $database = 'trtdb'
+PS> $mycreds = Get-Credential
+PS>Update-TRTDatabase -serverName $server -databaseName $database  -Credential $mycreds
 ```
 
 Contributing
