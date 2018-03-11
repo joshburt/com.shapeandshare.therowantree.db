@@ -1,3 +1,8 @@
+-- USE `therowantree`;
+DROP procedure IF EXISTS `deltaUserIncomeByGUID`;
+
+DELIMITER $$
+-- USE `therowantree`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `deltaUserIncomeByGUID`(
 	IN target_guid VARCHAR(255),
     IN target_income_source_id INT(11),
@@ -23,7 +28,7 @@ BEGIN
 
 			IF ((new_population >= 0) AND (new_workers >= 0))
 			THEN
-			-- TODO: this needs to be safer :/
+			-- TODO: this needs to be safer :/ 
 				CALL deltaUserPopulationByGUID(target_guid, -target_amount);
 				UPDATE user_income
 				SET amount = new_workers
@@ -32,4 +37,7 @@ BEGIN
 			END IF;
         END IF;
     COMMIT;
-END
+END$$
+
+DELIMITER ;
+

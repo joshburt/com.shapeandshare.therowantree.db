@@ -1,6 +1,11 @@
+-- USE `therowantree`;
+DROP procedure IF EXISTS `getUserStoresByGUID`;
+
+DELIMITER $$
+-- USE `therowantree`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserStoresByGUID`(
 	IN target_guid VARCHAR(255)
-)
+) 
 BEGIN
 	SELECT st1.store_name, st1.store_description, s1.amount
 		FROM store s1
@@ -9,4 +14,7 @@ BEGIN
 		JOIN store_type st1
 			ON st1.store_id = s1.store_id
 	WHERE u1.guid = target_guid;
-END
+END$$
+
+DELIMITER ;
+

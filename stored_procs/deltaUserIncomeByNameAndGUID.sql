@@ -1,3 +1,8 @@
+-- USE `therowantree`;
+DROP procedure IF EXISTS `deltaUserIncomeByNameAndGUID`;
+
+DELIMITER $$
+-- USE `therowantree`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `deltaUserIncomeByNameAndGUID`(
 	IN target_guid VARCHAR(255),
     IN target_income_source_name VARCHAR(255),
@@ -6,5 +11,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `deltaUserIncomeByNameAndGUID`(
 BEGIN
 	DECLARE target_income_source_id INT(11);
     SET target_income_source_id = (SELECT income_source_id FROM income_source_type WHERE income_source_name = target_income_source_name);
-	CALL deltaUserIncomeByGUID(target_guid, target_income_source_id, target_amount);
-END
+	CALL deltaUserIncomeByGUID(target_guid, target_income_source_id, target_amount); 
+END$$
+
+DELIMITER ;
+

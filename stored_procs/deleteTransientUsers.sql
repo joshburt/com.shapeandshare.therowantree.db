@@ -1,5 +1,12 @@
+-- USE `therowantree`;
+DROP procedure IF EXISTS `deleteTransientUsers`;
+
+DELIMITER $$
+-- USE `therowantree`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteTransientUsers`()
 BEGIN
+	-- removes stale users from the system when fired.
+    
 	DECLARE _guid VARCHAR(255);
     
 	DECLARE done INT DEFAULT FALSE;
@@ -20,4 +27,7 @@ BEGIN
     END LOOP;
     
     CLOSE transient_users_cursor;
-END
+END$$
+
+DELIMITER ;
+

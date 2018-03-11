@@ -1,8 +1,13 @@
+-- USE `therowantree`;
+DROP procedure IF EXISTS `processUserIncome`;
+
+DELIMITER $$
+-- USE `therowantree`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `processUserIncome`(
 	IN target_user_id INT(11)
 )
 BEGIN
-	-- get set of user_income entries for user
+	-- get set of user_income entries for user 
 		-- for each income entry (and multiple of)
 			-- if stores can be delta'ed do so, orherwise skip
 
@@ -38,4 +43,7 @@ BEGIN
 	
     CLOSE income_sources_cursor;
     
-END
+END$$
+
+DELIMITER ;
+

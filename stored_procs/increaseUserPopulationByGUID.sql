@@ -1,6 +1,11 @@
+-- USE `therowantree`;
+DROP procedure IF EXISTS `increaseUserPopulationByGUID`;
+
+DELIMITER $$
+-- USE `therowantree`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `increaseUserPopulationByGUID`(
 	IN target_guid VARCHAR(255)
-)
+) 
 BEGIN
 	DECLARE new_population INT(11) DEFAULT 0;
     DECLARE current_population INT(11);
@@ -30,4 +35,7 @@ BEGIN
 			COMMIT;
         END;
     END IF;
-END
+END$$
+
+DELIMITER ;
+

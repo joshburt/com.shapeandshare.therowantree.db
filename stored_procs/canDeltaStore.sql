@@ -1,3 +1,8 @@
+-- USE `therowantree`;
+DROP procedure IF EXISTS `canDeltaStore`;
+
+DELIMITER $$
+-- USE `therowantree`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `canDeltaStore`(
 	IN target_user_id INT(11),
 	IN target_store_id INT(11),
@@ -16,11 +21,14 @@ BEGIN
     IF currentAmount IS NULL THEN
 		SET currentAmount = 0;
     END IF;
-    
+	
 	IF (currentAmount + target_amount) >= 0 THEN
 		SET verdict = 1;
     END IF;
         
 	-- SELECT verdict;
     SET canDeltaStoreResult = verdict;
-END
+END$$
+
+DELIMITER ;
+

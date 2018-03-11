@@ -1,7 +1,12 @@
+-- USE `therowantree`;
+DROP procedure IF EXISTS `transportUserByGUID`;
+
+DELIMITER $$
+-- USE `therowantree`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `transportUserByGUID`(
 	IN target_guid VARCHAR(255),
     IN target_feature_name VARCHAR(255)
-)
+) 
 BEGIN
 	START TRANSACTION;
 		UPDATE user_game_state ugs1
@@ -22,4 +27,7 @@ BEGIN
 		WHERE u1.guid = target_guid
 			AND u1.active > 0;
 	COMMIT;
-END
+END$$
+
+DELIMITER ;
+

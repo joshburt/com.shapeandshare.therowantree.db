@@ -1,6 +1,11 @@
+-- USE `therowantree`;
+DROP procedure IF EXISTS `getUserFeaturesByGUID`;
+
+DELIMITER $$
+-- USE `therowantree`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserFeaturesByGUID`(
 	IN target_guid VARCHAR(255)
-)
+) 
 BEGIN
 	SELECT ft1.feature_name
 		FROM feature f1
@@ -9,4 +14,7 @@ BEGIN
     JOIN user u1
 		ON u1.user_id = f1.user_id
 	WHERE u1.guid = target_guid;
-END
+END$$
+
+DELIMITER ;
+

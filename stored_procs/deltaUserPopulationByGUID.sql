@@ -1,7 +1,12 @@
+-- USE `therowantree`;
+DROP procedure IF EXISTS `deltaUserPopulationByGUID`;
+
+DELIMITER $$
+-- USE `therowantree`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `deltaUserPopulationByGUID`(
 	IN target_guid VARCHAR(255),
     IN amount INT(11)
-)
+) 
 BEGIN
 	DECLARE new_population INT(11) DEFAULT 0;
     DECLARE current_population INT(11);
@@ -33,4 +38,7 @@ BEGIN
 			COMMIT;
         END;
     END IF;
-END
+END$$
+
+DELIMITER ;
+

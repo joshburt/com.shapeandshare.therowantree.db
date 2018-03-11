@@ -1,6 +1,11 @@
+-- USE `therowantree`;
+DROP procedure IF EXISTS `getUserMerchantTransformsByGUID`;
+
+DELIMITER $$
+-- USE `therowantree`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserMerchantTransformsByGUID`(
 	IN target_guid VARCHAR(255)
-)
+) 
 BEGIN
 SELECT DISTINCT st1.store_name
 	FROM user u1
@@ -13,4 +18,7 @@ JOIN store_type st1
 WHERE u1.guid = target_guid
 	AND u1.active > 0
 ORDER BY st1.store_name;
-END
+END$$
+
+DELIMITER ;
+

@@ -1,8 +1,13 @@
+-- USE `therowantree`;
+DROP procedure IF EXISTS `deleteUserByGUID`;
+
+DELIMITER $$
+-- USE `therowantree`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteUserByGUID`(
 	IN target_guid VARCHAR(255)
 )
 BEGIN
-	-- back into the darkness ..
+	-- back into the darkness ...
     
 	START TRANSACTION;
     
@@ -47,4 +52,7 @@ BEGIN
 		WHERE u1.guid = target_guid;
     
     COMMIT;
-END
+END$$
+
+DELIMITER ;
+
