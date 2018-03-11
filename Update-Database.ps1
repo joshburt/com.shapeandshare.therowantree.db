@@ -1,4 +1,9 @@
-# . ~/.bash_profile
+
+# If mysql is missing but the workbench is installed.
+# 1) Then execute this to add the path to ~/.bash_profile:
+#       echo 'export PATH=/usr/local/mysql/bin:$PATH' >> ~/.bash_profile
+# 2) Then execute this, to reload the change:
+#       . ~/.bash_profile
 
 $server = 'localhost'
 $username = 'root'
@@ -20,14 +25,6 @@ Get-ChildItem -Path ./tables | ForEach-Object -Process {
     # Write-Output $final_cmd
     Invoke-Expression $final_cmd
 }
-
-Write-Output('Creating Functions..')
-Get-ChildItem -Path ./functions | ForEach-Object -Process {
-    $final_cmd = "$mysql_cmd -e ""source $($_.FullName)"" "
-    # Write-Output $final_cmd
-    Invoke-Expression $final_cmd
-}
-
 
 Write-Output('Creating Stored Procedures..')
 Get-ChildItem -Path ./stored_procs | ForEach-Object -Process {
