@@ -2,17 +2,16 @@ START TRANSACTION;
 
 SET GLOBAL event_scheduler = ON;
 
-DROP EVENT WheelOfTime;
+DROP EVENT IF EXISTS `WheelOfTime`;
 CREATE EVENT WheelOfTime
     ON SCHEDULE EVERY 1 SECOND
-    DO CALL therowantree.applyTimeQuantum;
+    DO CALL applyTimeQuantum;
 
-DROP EVENT CleanUpTemporaryUsers;
+DROP EVENT IF EXISTS `CleanUpTemporaryUsers`;
 CREATE EVENT CleanUpTemporaryUsers
     ON SCHEDULE EVERY 1 DAY
-        DO CALL therowantree.CleanUpTemporaryUsers;
+        DO CALL CleanUpTemporaryUsers;
 
 COMMIT;
 
 SHOW EVENTS;
-
