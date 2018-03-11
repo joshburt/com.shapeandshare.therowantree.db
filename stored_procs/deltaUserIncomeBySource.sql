@@ -1,3 +1,8 @@
+-- USE `therowantree`;
+DROP procedure IF EXISTS `deltaUserIncomeBySource`;
+
+DELIMITER $$
+-- USE `therowantree`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `deltaUserIncomeBySource`(
 IN target_user_id INT(11), 
 IN target_income_source_id INT(11)
@@ -24,7 +29,7 @@ BEGIN
 			LEAVE read_loop;
 		END IF;
         
-		-- cotext, for user, for income source, for each store of it,
+		-- cotext, for user, for income source, for each store of it, 
         CALL canDeltaStore(target_user_id, _store_id, _amount, canDeltaStoreResult);
         IF (canDeltaStoreResult = 0) THEN
 			SET incomeFlag = FALSE;
@@ -54,4 +59,7 @@ BEGIN
 		END;
 	END IF;
     
-END
+END$$
+
+DELIMITER ;
+
