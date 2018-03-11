@@ -1,3 +1,4 @@
+START TRANSACTION;
 
 SET @source_name = 'gatherer';
 SET @store_name = 'wood';
@@ -292,13 +293,16 @@ INSERT INTO income_source (income_source_id, store_id, amount) VALUES
 );
 
 
+COMMIT;
 
--------------------------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
 -- Report
+-------------------------------------------------------------------------------
 SELECT ist1.income_source_name, st1.store_name,  is1.amount
 	FROM income_source_type ist1
 JOIN income_source is1
 	ON ist1.income_source_id = is1.income_source_id
 JOIN store_type st1
-	ON st1.store_id = is1.store_id
--------------------------------------------------------------------------------------------------------------------
+	ON st1.store_id = is1.store_id;
+

@@ -1,3 +1,5 @@
+START TRANSACTION;
+
 SET GLOBAL event_scheduler = ON;
 
 DROP EVENT WheelOfTime;
@@ -10,4 +12,7 @@ CREATE EVENT CleanUpTemporaryUsers
     ON SCHEDULE EVERY 1 DAY
         DO CALL therowantree.CleanUpTemporaryUsers;
 
+COMMIT;
+
 SHOW EVENTS;
+
