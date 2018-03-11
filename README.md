@@ -31,11 +31,11 @@ The scripts to create the database require PowerShell 6.0+ (pwsh) and MySQL comm
 Example invokcation of the database creation script
 ```
 /$ pwsh 
-PS> Import-Module ./Update-TRTDatabase.psd1
+PS> Import-Module ./Update-TRTDatabase.ps1
 PS> $server = 'localhost'
 PS> $database = 'trtdb'
 PS> $mycreds = Get-Credential
-PS>Update-TRTDatabase -serverName $server -databaseName $database  -Credential $mycreds
+PS> Update-TRTDatabase -serverName $server -databaseName $database  -Credential $mycreds
 ```
 
 Contributing
