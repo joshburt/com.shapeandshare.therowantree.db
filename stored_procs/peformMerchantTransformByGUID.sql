@@ -10,6 +10,7 @@ BEGIN
  
     -- Default to allowing the income change
 	DECLARE transformFlag BOOLEAN DEFAULT TRUE;
+    DECLARE canDeltaStoreResult BOOLEAN DEFAULT FALSE;
     
 	DECLARE done INT DEFAULT FALSE;
 	DECLARE element_transform_cursor CURSOR FOR 
@@ -37,14 +38,17 @@ BEGIN
 	IF done THEN
 		LEAVE read_loop;
 	END IF;
-		IF !canDeltaStore(target_user_id, _store_id, _source_amount) THEN
+    CALL canDeltaStore(target_user_id, _store_id, _source_amount, canDeltaStoreResult);
+		IF (canDeltaStoreResult = 0) THEN
 			SET transformFlag = FALSE;
 		END IF;
 	END LOOP;
     CLOSE element_transform_cursor;
 
+
     -- also check the implicit store type (the one to get)    
-	IF !canDeltaStore(target_user_id, (SELECT store_id FROM store_type WHERE store_name=to_store_name), _amount) THEN
+	CALL canDeltaStore(target_user_id, (SELECT store_id FROM store_type WHERE store_name=to_store_name), _amount, canDeltaStoreResult);
+	IF (canDeltaStoreResult = 0) THEN
 		SET transformFlag = FALSE;
 	END IF;
     

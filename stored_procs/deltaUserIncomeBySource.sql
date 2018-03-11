@@ -7,6 +7,7 @@ BEGIN
 	
     -- Default to allowing the income change
 	DECLARE incomeFlag BOOLEAN DEFAULT TRUE;
+    DECLARE canDeltaStoreResult BOOLEAN DEFAULT FALSE;
     
 	DECLARE _store_id INT(11);
 	DECLARE _amount FLOAT;
@@ -24,7 +25,8 @@ BEGIN
 		END IF;
         
 		-- cotext, for user, for income source, for each store of it,
-		IF !canDeltaStore(target_user_id, _store_id, _amount) THEN
+        CALL canDeltaStore(target_user_id, _store_id, _amount, canDeltaStoreResult);
+        IF (canDeltaStoreResult = 0) THEN
 			SET incomeFlag = FALSE;
 		END IF;
     END LOOP;

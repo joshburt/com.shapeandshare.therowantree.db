@@ -1,10 +1,10 @@
-CREATE DEFINER=`root`@`localhost` FUNCTION `canDeltaStore`(
-	target_user_id INT(11),
-	target_store_id INT(11),
-	target_amount FLOAT
-) RETURNS tinyint(1)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `canDeltaStore`(
+	IN target_user_id INT(11),
+	IN target_store_id INT(11),
+	IN target_amount FLOAT,
+    OUT canDeltaStoreResult TINYINT(1)
+)
 BEGIN
-
 	DECLARE verdict INT DEFAULT FALSE;
 	DECLARE currentAmount FLOAT;
     
@@ -21,6 +21,6 @@ BEGIN
 		SET verdict = 1;
     END IF;
         
-        
-RETURN verdict;
+	-- SELECT verdict;
+    SET canDeltaStoreResult = verdict;
 END
