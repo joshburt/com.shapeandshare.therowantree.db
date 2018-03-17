@@ -16,7 +16,7 @@ This project contains the MySQL Schema, and tools required to deploy and maintai
 * model - contains the MySQL Workbech model for the project.
 * stored_procs - contains the create scripts for the stored procedures.
 * tables - contains the create scripts for the tables.
-* the dawn chant - contains the seed scripts required to bring the work into being.
+* the dawn chant - contains the seed scripts required to bring the world into being.
 
 Requirements
 ------------
