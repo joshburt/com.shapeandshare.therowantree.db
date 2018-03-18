@@ -1,8 +1,7 @@
--- USE `therowantree`;
 DROP procedure IF EXISTS `canDeltaStore`;
 
 DELIMITER $$
--- USE `therowantree`$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `canDeltaStore`(
 	IN target_user_id INT(11),
 	IN target_store_id INT(11),

@@ -1,8 +1,8 @@
--- USE `therowantree`;
+
 DROP procedure IF EXISTS `processUserIncome`;
 
 DELIMITER $$
--- USE `therowantree`$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `processUserIncome`(
 	IN target_user_id INT(11)
 )

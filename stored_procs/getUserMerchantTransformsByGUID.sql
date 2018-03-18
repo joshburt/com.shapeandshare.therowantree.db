@@ -1,8 +1,7 @@
--- USE `therowantree`;
 DROP procedure IF EXISTS `getUserMerchantTransformsByGUID`;
 
 DELIMITER $$
--- USE `therowantree`$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserMerchantTransformsByGUID`(
 	IN target_guid VARCHAR(255)
 ) 

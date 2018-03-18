@@ -1,8 +1,7 @@
--- USE `therowantree`;
 DROP procedure IF EXISTS `getUserActiveFeatureByGUID`;
 
 DELIMITER $$
--- USE `therowantree`$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserActiveFeatureByGUID`(
 	IN target_guid VARCHAR(255)
 ) 

@@ -1,8 +1,8 @@
--- USE `therowantree`;
+
 DROP procedure IF EXISTS `peformMerchantTransformByGUID`;
 
 DELIMITER $$
--- USE `therowantree`$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `peformMerchantTransformByGUID`(
 	IN target_guid VARCHAR(255),
 	IN to_store_name VARCHAR(255)
