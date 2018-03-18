@@ -1,8 +1,7 @@
--- USE `therowantree`;
 DROP procedure IF EXISTS `getUserActivityStateByGUID`;
 
 DELIMITER $$
--- USE `therowantree`$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserActivityStateByGUID`(
 	IN target_guid VARCHAR(255),
     OUT target_active TINYINT(4)

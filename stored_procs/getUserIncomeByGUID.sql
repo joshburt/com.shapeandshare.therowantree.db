@@ -1,8 +1,7 @@
--- USE `therowantree`;
 DROP procedure IF EXISTS `getUserIncomeByGUID`;
 
 DELIMITER $$
--- USE `therowantree`$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserIncomeByGUID`(
 	IN target_guid VARCHAR(255)
 ) 

@@ -1,8 +1,7 @@
--- USE `therowantree`;
 DROP procedure IF EXISTS `deltaUserIncomeBySource`;
 
 DELIMITER $$
--- USE `therowantree`$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `deltaUserIncomeBySource`(
 IN target_user_id INT(11), 
 IN target_income_source_id INT(11)

@@ -1,8 +1,7 @@
--- USE `therowantree`;
 DROP procedure IF EXISTS `getUserStoresByGUID`;
 
 DELIMITER $$
--- USE `therowantree`$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserStoresByGUID`(
 	IN target_guid VARCHAR(255)
 ) 

@@ -1,8 +1,7 @@
--- USE `therowantree`;
 DROP procedure IF EXISTS `createUser`;
 
 DELIMITER $$
--- USE `therowantree`$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `createUser`()
 BEGIN
 	-- Creates a new user with a new random UUID

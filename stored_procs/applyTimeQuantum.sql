@@ -1,8 +1,7 @@
--- USE `dev_therowantree`;
 DROP procedure IF EXISTS `applyTimeQuantum`;
 
 DELIMITER $$
--- USE `therowantree`$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `applyTimeQuantum`()
 BEGIN
 	-- Update income for all active users

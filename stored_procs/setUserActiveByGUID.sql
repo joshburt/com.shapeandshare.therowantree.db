@@ -1,8 +1,8 @@
--- USE `therowantree`;
+
 DROP procedure IF EXISTS `setUserActiveByGUID`;
 
 DELIMITER $$
--- USE `therowantree`$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `setUserActiveByGUID`(
 	IN target_guid VARCHAR(255)
 ) 
