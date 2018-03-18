@@ -10,4 +10,4 @@ CREATE TABLE `feature_state` (
   UNIQUE KEY `state_name_UNIQUE` (`state_name`),
   KEY `fk_feature_id_feature_state_feature_type_idx` (`feature_id`),
   CONSTRAINT `fk_feature_id_feature_state_feature_type` FOREIGN KEY (`feature_id`) REFERENCES `feature_type` (`feature_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
