@@ -5,4 +5,4 @@ CREATE TABLE `fire_type` (
   PRIMARY KEY (`fire_id`),
   UNIQUE KEY `fire_id_UNIQUE` (`fire_id`),
   UNIQUE KEY `fire_name_UNIQUE` (`fire_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;

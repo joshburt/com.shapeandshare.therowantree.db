@@ -5,4 +5,4 @@ CREATE TABLE `temperature_type` (
   PRIMARY KEY (`temperature_id`),
   UNIQUE KEY `temperature_id_UNIQUE` (`temperature_id`),
   UNIQUE KEY `temperature_name_UNIQUE` (`temperature_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;

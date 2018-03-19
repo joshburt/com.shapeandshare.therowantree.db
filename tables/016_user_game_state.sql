@@ -13,4 +13,4 @@ CREATE TABLE `user_game_state` (
   CONSTRAINT `fk_feature_id_feature_type_user_state` FOREIGN KEY (`active_feature`) REFERENCES `feature_type` (`feature_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_game_fire_state_id_user_game_state_fire_type` FOREIGN KEY (`game_fire_state_id`) REFERENCES `fire_type` (`fire_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_game_temperature_id_user_game_state_temperature_type` FOREIGN KEY (`game_temperature_id`) REFERENCES `temperature_type` (`temperature_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
