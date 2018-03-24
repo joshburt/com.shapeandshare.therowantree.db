@@ -14,12 +14,10 @@ function Update-TRTDatabase {
         [Parameter(Mandatory = $true)]
         [String]$databaseName,
 
-        # The credential to connect to the database
+        ## The user account to connect to the database
         [Parameter(Mandatory = $true)]
         [ValidateNotNull()]
-        [System.Management.Automation.PSCredential]
-        [System.Management.Automation.Credential()]
-        $Credential = [System.Management.Automation.PSCredential]::Empty,
+        [String]$userName,
 
         [Switch]
         $displayCmd
@@ -29,15 +27,20 @@ function Update-TRTDatabase {
     }
     
     process {
+        # used to store the mysql credentials. the app doesn't allow passing the password through, thus the reason
+        # we aren't using a pscredential object anymore.  Also the plain mysql cmd used below would through a warning
+        # when passing the creds though.
+        $mysql_set_creds_cmd = "mysql_config_editor set --login-path=local --host=$serverName --user=$userName --password"
+        
+        # Set our credentials
+        if ($displayCmd) { Write-Output $mysql_set_creds_cmd }
+        Invoke-Expression $mysql_set_creds_cmd
 
-        $UserName = $Credential.UserName
-        $Password = $Credential.GetNetworkCredential().Password
-
-        $mysql_cmd = "mysql --host $serverName --user $UserName --password=$Password --database $databaseName"
+        $mysql_cmd = "mysql --login-path=local --database $databaseName"
 
         # Create the database
         $database_create_statement = """CREATE DATABASE ``$databaseName`` /*!40100 DEFAULT CHARACTER SET latin1 */;"""
-        $full_create = "mysql --host $serverName --user $UserName --password=$Password --execute=$database_create_statement"
+        $full_create = "mysql --login-path=local --execute=$database_create_statement"
 
         if ($displayCmd) { Write-Output $full_create }
         Invoke-Expression $full_create
