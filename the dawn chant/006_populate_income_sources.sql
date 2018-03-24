@@ -1,3 +1,5 @@
+SET AUTOCOMMIT = 0;
+
 START TRANSACTION;
 
 SET @source_name = 'gatherer';
@@ -291,7 +293,6 @@ INSERT INTO income_source (income_source_id, store_id, amount) VALUES
 	(SELECT st1.store_id FROM store_type st1 WHERE st1.store_name = @store_name),
 	(@amount)
 );
-
 
 COMMIT;
 

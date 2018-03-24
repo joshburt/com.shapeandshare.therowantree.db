@@ -1,3 +1,5 @@
+SET AUTOCOMMIT = 0;
+
 START TRANSACTION;
 
 SET @store_name = 'fur';

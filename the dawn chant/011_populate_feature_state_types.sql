@@ -1,3 +1,5 @@
+SET AUTOCOMMIT = 0;
+
 START TRANSACTION;
 
 SET @room_feature_id =  (SELECT feature_id FROM feature_type WHERE feature_name = 'room');
@@ -13,5 +15,8 @@ INSERT INTO feature_state (feature_id, state_index, state_name, state_descriptio
     (@outside_feature_id, 5, 'A Bustling Town', NULL),
     (@outside_feature_id, 6, 'A Swarming City', NULL);
 
-
 COMMIT;
+
+-- ----------------------------------------------------------------------------
+-- Report --
+-- ----------------------------------------------------------------------------

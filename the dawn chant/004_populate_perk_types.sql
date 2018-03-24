@@ -1,3 +1,5 @@
+SET AUTOCOMMIT = 0;
+
 START TRANSACTION;
 
 INSERT INTO perk_type (perk_name, perk_description, perk_notify) VALUES
@@ -13,3 +15,10 @@ INSERT INTO perk_type (perk_name, perk_description, perk_notify) VALUES
     ('stealthy', 'better avoid conflict in the wild', 'learned how not to be seen');
 
 COMMIT;
+
+-- ----------------------------------------------------------------------------
+-- Report --
+-- ----------------------------------------------------------------------------
+SELECT *
+    FROM perk_type;
+

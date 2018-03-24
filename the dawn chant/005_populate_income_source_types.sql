@@ -1,3 +1,5 @@
+SET AUTOCOMMIT = 0;
+
 START TRANSACTION;
 
 INSERT INTO income_source_type (income_source_name) VALUES
@@ -14,3 +16,9 @@ INSERT INTO income_source_type (income_source_name) VALUES
     ('armourer');
 
 COMMIT;
+
+-- ----------------------------------------------------------------------------
+-- Report --
+-- ----------------------------------------------------------------------------
+SELECT *
+    FROM income_source_type;

@@ -1,3 +1,5 @@
+SET AUTOCOMMIT = 0;
+
 START TRANSACTION;
 
 INSERT INTO store_type (store_name) VALUES
@@ -49,3 +51,9 @@ INSERT INTO store_type (store_name) VALUES
     ('setpieces');
 
 COMMIT;
+
+-- ----------------------------------------------------------------------------
+-- Report --
+-- ----------------------------------------------------------------------------
+SELECT *
+    FROM store_type;

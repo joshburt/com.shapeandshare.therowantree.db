@@ -1,3 +1,5 @@
+SET AUTOCOMMIT = 0;
+
 START TRANSACTION;
 
 -- ----------------------------------------------------------------------------
@@ -6,3 +8,10 @@ START TRANSACTION;
 INSERT INTO feature_type (feature_name) VALUES ('room'), ('outside'), ('world'), ('spaceship');
 
 COMMIT;
+
+
+-- ----------------------------------------------------------------------------
+-- Report --
+-- ----------------------------------------------------------------------------
+SELECT *
+    FROM feature_type;

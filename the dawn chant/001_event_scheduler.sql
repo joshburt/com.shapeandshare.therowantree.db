@@ -1,6 +1,6 @@
-START TRANSACTION;
+SET AUTOCOMMIT = 0;
 
-SET GLOBAL event_scheduler = ON;
+START TRANSACTION;
 
 DROP EVENT IF EXISTS `WheelOfTime`;
 CREATE EVENT WheelOfTime
@@ -14,4 +14,9 @@ CREATE EVENT CleanUpTemporaryUsers
 
 COMMIT;
 
+SET GLOBAL event_scheduler = ON;
+
+-- ----------------------------------------------------------------------------
+-- Report --
+-- ----------------------------------------------------------------------------
 SHOW EVENTS;

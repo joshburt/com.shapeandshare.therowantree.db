@@ -1,3 +1,5 @@
+SET AUTOCOMMIT = 0;
+
 START TRANSACTION;
 
 INSERT INTO temperature_type (temperature_name, temperature_description) VALUES 
