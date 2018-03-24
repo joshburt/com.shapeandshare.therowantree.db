@@ -1,5 +1,3 @@
-SET AUTOCOMMIT = 0;
-
 START TRANSACTION;
 
 INSERT INTO income_source_type (income_source_name) VALUES

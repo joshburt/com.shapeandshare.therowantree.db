@@ -1,5 +1,3 @@
-SET AUTOCOMMIT = 0;
-
 START TRANSACTION;
 
 SET @scales = (SELECT store_id FROM store_type WHERE store_name = 'scales');

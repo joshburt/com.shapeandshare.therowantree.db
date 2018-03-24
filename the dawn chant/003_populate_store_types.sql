@@ -1,5 +1,3 @@
-SET AUTOCOMMIT = 0;
-
 START TRANSACTION;
 
 INSERT INTO store_type (store_name) VALUES

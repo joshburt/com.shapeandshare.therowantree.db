@@ -1,5 +1,3 @@
-SET AUTOCOMMIT = 0;
-
 START TRANSACTION;
 
 SET @room_feature_id =  (SELECT feature_id FROM feature_type WHERE feature_name = 'room');

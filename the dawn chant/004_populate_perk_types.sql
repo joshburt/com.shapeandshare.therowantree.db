@@ -1,5 +1,3 @@
-SET AUTOCOMMIT = 0;
-
 START TRANSACTION;
 
 INSERT INTO perk_type (perk_name, perk_description, perk_notify) VALUES

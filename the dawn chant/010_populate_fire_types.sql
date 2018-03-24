@@ -1,5 +1,3 @@
-SET AUTOCOMMIT = 0;
-
 START TRANSACTION;
 
 INSERT INTO fire_type (fire_name, fire_description) VALUES 
