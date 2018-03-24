@@ -34,7 +34,7 @@ Example invokcation of the database creation script
 PS> Import-Module ./Update-TRTDatabase.ps1
 PS> $server = 'localhost'
 PS> $database = 'trtdb'
-PS> $user = 'root'
+PS> $user = 'trt_service'
 PS> Update-TRTDatabase -serverName $server -databaseName $database  -userName $user
 ```
 
