@@ -1,12 +1,8 @@
-DROP procedure IF EXISTS `deleteUserByGUID`;
-
-DELIMITER $$
-
 CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteUserByGUID`(
 	IN target_guid VARCHAR(255)
 )
 BEGIN
-	-- back into the darkness ...
+	
     
 	START TRANSACTION;
     
@@ -46,12 +42,21 @@ BEGIN
 					ON u1.user_id = ui2.user_id
 		WHERE u1.guid = target_guid;
 		
+        DELETE ufs1
+			FROM user_feature_state ufs1
+				JOIN user u1
+					ON u1.user_id = ufs1.user_id
+		WHERE u1.guid = target_guid;
+        
+        DELETE un1
+			FROM user_notification un1
+				JOIN user u1
+					ON u1.user_id = un1.user_id
+		WHERE u1.guid = target_guid;
+        
 		DELETE u1 
 			FROM user u1
 		WHERE u1.guid = target_guid;
     
     COMMIT;
-END$$
-
-DELIMITER ;
-
+END
