@@ -5,7 +5,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `deltaUserStore`(
 	IN `my_user_id` INT(11),
 	IN `my_store_id` INT(11),
 	IN `my_amount` FLOAT
-)
+) 
 BEGIN
 	START TRANSACTION;
     

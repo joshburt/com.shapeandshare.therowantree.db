@@ -16,7 +16,7 @@ BEGIN
     THEN
 		IF (my_amount > 0)
 		THEN
-			INSERT INTO store (user_id, store_id, amount) VALUES (my_user_id, @my_store_id, @amount);
+			INSERT INTO store (user_id, store_id, amount) VALUES (my_user_id, @my_store_id, my_amount);
 		END IF;
     ELSE
 		IF (@amount + my_amount) < 0
