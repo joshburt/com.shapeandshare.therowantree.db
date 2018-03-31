@@ -11,17 +11,29 @@ BEGIN
     
     SET @my_store_id = (SELECT store_id FROM store_type WHERE store_name = my_store_name);
     SET @amount = (SELECT amount FROM store WHERE user_id=my_user_id AND store_id=@my_store_id);
-    
+    SET @new_entry = FALSE;
+
     IF (@amount IS NULL)
     THEN
-		INSERT INTO store (user_id, store_id, amount) VALUES (my_user_id, @my_store_id, my_amount);
+		SET @amount = 0;
+        SET @new_entry = TRUE;
+    END IF;
+
+	IF ((@amount + my_amount) >= 0)
+	THEN
+		SET @amount = @amount + my_amount;
+	END IF;
+
+    IF (@new_entry IS TRUE)
+    THEN
+		INSERT INTO store (user_id, store_id, amount) VALUES (my_user_id, @my_store_id, @amount);
 	ELSE
 		UPDATE store
-			SET amount = (@amount  + my_amount)
+			SET amount = @amount
 		WHERE user_id=my_user_id 
 			AND store_id=@my_store_id;
     END IF;
-    
+
     COMMIT;
 END$$
 
