@@ -7,6 +7,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `transportUserByGUID`(
     IN target_feature_name VARCHAR(255)
 )
 BEGIN
+
 	DECLARE target_feature_id INT(11);
     DECLARE target_user_id INT(11);
     

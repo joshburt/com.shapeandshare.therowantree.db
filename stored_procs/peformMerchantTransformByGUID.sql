@@ -7,6 +7,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `peformMerchantTransformByGUID`(
 	IN to_store_name VARCHAR(255)
 ) 
 BEGIN
+
     DECLARE target_user_id INT(11);
  	DECLARE _store_id INT(11);
 	DECLARE _amount FLOAT;

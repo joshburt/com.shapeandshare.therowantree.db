@@ -7,6 +7,19 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sendUserNotification`(
     IN target_notification VARCHAR(2048)
 )
 BEGIN
+
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+		-- ERROR
+		ROLLBACK;
+    END;
+
+	DECLARE EXIT HANDLER FOR SQLWARNING
+	BEGIN
+		-- WARNING
+		ROLLBACK;
+	END;
+
 	START TRANSACTION;
 		INSERT INTO user_notification (user_id, message) VALUES
 			(target_user_id, target_notification);

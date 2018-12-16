@@ -7,6 +7,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `deltaUserPopulationByGUID`(
     IN amount INT(11)
 ) 
 BEGIN
+
 	DECLARE new_population INT(11) DEFAULT 0;
     DECLARE current_population INT(11);
     DECLARE active_state TINYINT(4);

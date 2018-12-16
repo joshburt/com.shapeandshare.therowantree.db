@@ -8,6 +8,19 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `deltaUserStoreByStoreName`(
 	IN `my_amount` FLOAT
 ) 
 BEGIN
+
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+		-- ERROR
+		ROLLBACK;
+    END;
+
+	DECLARE EXIT HANDLER FOR SQLWARNING
+	BEGIN
+		-- WARNING
+		ROLLBACK;
+	END;
+
 	START TRANSACTION;
     
     SET @my_store_id = (SELECT store_id FROM store_type WHERE store_name = my_store_name);
