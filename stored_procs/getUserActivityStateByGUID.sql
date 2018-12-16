@@ -1,6 +1,6 @@
-DROP procedure IF EXISTS `getUserActivityStateByGUID`;
-
 DELIMITER $$
+
+DROP procedure IF EXISTS `getUserActivityStateByGUID`;
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserActivityStateByGUID`(
 	IN target_guid VARCHAR(255),
@@ -11,4 +11,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-

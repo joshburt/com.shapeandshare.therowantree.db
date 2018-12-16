@@ -1,6 +1,6 @@
-DROP procedure IF EXISTS `applyTimeQuantum`;
-
 DELIMITER $$
+
+DROP procedure IF EXISTS `applyTimeQuantum`;
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `applyTimeQuantum`()
 BEGIN

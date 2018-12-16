@@ -1,6 +1,6 @@
-DROP procedure IF EXISTS `setUserInactiveByGUID`;
-
 DELIMITER $$
+
+DROP procedure IF EXISTS `setUserInactiveByGUID`;
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `setUserInactiveByGUID`(
 	IN target_guid VARCHAR(255)
@@ -14,4 +14,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-

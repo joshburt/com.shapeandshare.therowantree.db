@@ -1,9 +1,12 @@
+DELIMITER $$
+
+DROP procedure IF EXISTS `deleteUserByGUID`;
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteUserByGUID`(
 	IN target_guid VARCHAR(255)
 )
 BEGIN
-	
-    
+
 	START TRANSACTION;
     
 		DELETE f1
@@ -60,3 +63,6 @@ BEGIN
     
     COMMIT;
 END
+$$
+
+DELIMITER ;

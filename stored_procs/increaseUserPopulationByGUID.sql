@@ -1,11 +1,12 @@
-DROP procedure IF EXISTS `increaseUserPopulationByGUID`;
-
 DELIMITER $$
+
+DROP procedure IF EXISTS `increaseUserPopulationByGUID`;
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `increaseUserPopulationByGUID`(
 	IN target_guid VARCHAR(255)
 ) 
 BEGIN
+
 	DECLARE new_population INT(11) DEFAULT 0;
     DECLARE current_population INT(11);
     DECLARE active_state TINYINT(4);
@@ -37,4 +38,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-

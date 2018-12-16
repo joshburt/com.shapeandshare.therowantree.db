@@ -1,6 +1,6 @@
-DROP procedure IF EXISTS `getUserStoresByGUID`;
-
 DELIMITER $$
+
+DROP procedure IF EXISTS `getUserStoresByGUID`;
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserStoresByGUID`(
 	IN target_guid VARCHAR(255)
@@ -16,4 +16,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-

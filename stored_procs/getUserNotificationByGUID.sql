@@ -1,8 +1,12 @@
+DELIMITER $$
+
+DROP procedure IF EXISTS `getUserNotificationByGUID`;
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserNotificationByGUID`(
 	IN target_guid VARCHAR(255)
 )
 BEGIN
-	
+
     START TRANSACTION;
 		
         DROP TEMPORARY TABLE IF EXISTS  `target_user_notifications`;
@@ -27,4 +31,6 @@ BEGIN
     
     COMMIT;
     
-END
+END$$
+
+DELIMITER ;

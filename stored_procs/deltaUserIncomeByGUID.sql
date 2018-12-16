@@ -1,6 +1,6 @@
-DROP procedure IF EXISTS `deltaUserIncomeByGUID`;
-
 DELIMITER $$
+
+DROP procedure IF EXISTS `deltaUserIncomeByGUID`;
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `deltaUserIncomeByGUID`(
 	IN target_guid VARCHAR(255),
@@ -8,6 +8,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `deltaUserIncomeByGUID`(
     IN target_amount INT(11)
 )
 BEGIN
+
 	DECLARE target_user_id INT(11);
     DECLARE current_population INT(11);
     DECLARE new_population INT(11);
@@ -39,4 +40,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-

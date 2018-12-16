@@ -1,6 +1,6 @@
-DROP procedure IF EXISTS `createUser`;
-
 DELIMITER $$
+
+DROP procedure IF EXISTS `createUser`;
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `createUser`()
 BEGIN
@@ -11,4 +11,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-

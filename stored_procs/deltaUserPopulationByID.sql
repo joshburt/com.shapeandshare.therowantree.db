@@ -1,8 +1,13 @@
+DELIMITER $$
+
+DROP procedure IF EXISTS `deltaUserPopulationByID`;
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `deltaUserPopulationByID`(
 	IN target_id INT(11),
     IN amount INT(11)
 )
 BEGIN
+
 	DECLARE new_population INT(11) DEFAULT 0;
     DECLARE current_population INT(11);
 
@@ -28,4 +33,6 @@ BEGIN
 	END IF;
     
 	COMMIT;
-END
+END$$
+
+DELIMITER ;

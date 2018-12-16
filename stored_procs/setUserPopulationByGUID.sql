@@ -1,6 +1,6 @@
-DROP procedure IF EXISTS `setUserPopulationByGUID`;
-
 DELIMITER $$
+
+DROP procedure IF EXISTS `setUserPopulationByGUID`;
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `setUserPopulationByGUID`(
 	IN target_guid VARCHAR(255),
@@ -15,4 +15,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-

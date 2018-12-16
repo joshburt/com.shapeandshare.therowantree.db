@@ -1,6 +1,6 @@
-DROP procedure IF EXISTS `deleteTransientUsers`;
-
 DELIMITER $$
+
+DROP procedure IF EXISTS `deleteTransientUsers`;
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteTransientUsers`()
 BEGIN
@@ -29,4 +29,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-

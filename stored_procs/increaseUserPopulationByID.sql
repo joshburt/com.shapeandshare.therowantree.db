@@ -1,7 +1,12 @@
+DELIMITER $$
+
+DROP procedure IF EXISTS `increaseUserPopulationByID`;
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `increaseUserPopulationByID`(
 	IN target_user_id INT(11)
 )
 BEGIN
+
 	DECLARE new_population INT(11) DEFAULT 0;
     DECLARE current_population INT(11);
 
@@ -25,4 +30,6 @@ BEGIN
 	
 	COMMIT;
 
-END
+END$$
+
+DELIMITER ;

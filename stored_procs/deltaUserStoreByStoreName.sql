@@ -1,12 +1,14 @@
+DELIMITER $$
+
 DROP procedure IF EXISTS `deltaUserStoreByStoreName`;
 
-DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `deltaUserStoreByStoreName`(
 	IN `my_user_id` INT(11),
 	IN `my_store_name` VARCHAR(255),
 	IN `my_amount` FLOAT
 ) 
 BEGIN
+
 	START TRANSACTION;
     
     SET @my_store_id = (SELECT store_id FROM store_type WHERE store_name = my_store_name);
@@ -36,4 +38,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-

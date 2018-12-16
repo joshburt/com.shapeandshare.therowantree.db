@@ -1,6 +1,6 @@
-DROP procedure IF EXISTS `getUserFeaturesByGUID`;
-
 DELIMITER $$
+
+DROP procedure IF EXISTS `getUserFeaturesByGUID`;
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserFeaturesByGUID`(
 	IN target_guid VARCHAR(255)
@@ -16,4 +16,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-

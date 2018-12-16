@@ -1,12 +1,13 @@
-DROP procedure IF EXISTS `transportUserByGUID`;
-
 DELIMITER $$
+
+DROP procedure IF EXISTS `transportUserByGUID`;
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `transportUserByGUID`(
 	IN target_guid VARCHAR(255),
     IN target_feature_name VARCHAR(255)
 )
 BEGIN
+
 	DECLARE target_feature_id INT(11);
     DECLARE target_user_id INT(11);
     
@@ -51,4 +52,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-

@@ -1,6 +1,7 @@
+DELIMITER $$
+
 DROP procedure IF EXISTS `getUserPopulationByID`;
 
-DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserPopulationByID`(
 	IN target_user_id INT(11)
 )
@@ -11,4 +12,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-

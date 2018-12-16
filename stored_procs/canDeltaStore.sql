@@ -1,6 +1,6 @@
-DROP procedure IF EXISTS `canDeltaStore`;
-
 DELIMITER $$
+
+DROP procedure IF EXISTS `canDeltaStore`;
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `canDeltaStore`(
 	IN target_user_id INT(11),
