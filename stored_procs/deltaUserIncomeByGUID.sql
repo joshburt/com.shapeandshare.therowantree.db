@@ -1,6 +1,6 @@
-DROP procedure IF EXISTS `deltaUserIncomeByGUID`;
-
 DELIMITER $$
+
+DROP procedure IF EXISTS `deltaUserIncomeByGUID`;
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `deltaUserIncomeByGUID`(
 	IN target_guid VARCHAR(255),
@@ -39,4 +39,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-

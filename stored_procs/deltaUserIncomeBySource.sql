@@ -1,10 +1,10 @@
-DROP procedure IF EXISTS `deltaUserIncomeBySource`;
-
 DELIMITER $$
 
+DROP procedure IF EXISTS `deltaUserIncomeBySource`;
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `deltaUserIncomeBySource`(
-IN target_user_id INT(11), 
-IN target_income_source_id INT(11)
+	IN target_user_id INT(11), 
+	IN target_income_source_id INT(11)
 )
 BEGIN
 	-- SELECT user_id, income_source_id;
@@ -61,4 +61,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-

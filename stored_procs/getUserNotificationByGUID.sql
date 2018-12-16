@@ -1,3 +1,7 @@
+DELIMITER $$
+
+DROP procedure IF EXISTS `getUserNotificationByGUID`;
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserNotificationByGUID`(
 	IN target_guid VARCHAR(255)
 )
@@ -27,4 +31,6 @@ BEGIN
     
     COMMIT;
     
-END
+END$$
+
+DELIMITER ;

@@ -1,6 +1,6 @@
-DROP procedure IF EXISTS `getUserIncomeByGUID`;
-
 DELIMITER $$
+
+DROP procedure IF EXISTS `getUserIncomeByGUID`;
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserIncomeByGUID`(
 	IN target_guid VARCHAR(255)
@@ -16,4 +16,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-

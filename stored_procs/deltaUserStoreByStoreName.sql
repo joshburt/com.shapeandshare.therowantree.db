@@ -1,6 +1,7 @@
+DELIMITER $$
+
 DROP procedure IF EXISTS `deltaUserStoreByStoreName`;
 
-DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `deltaUserStoreByStoreName`(
 	IN `my_user_id` INT(11),
 	IN `my_store_name` VARCHAR(255),
@@ -36,4 +37,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-

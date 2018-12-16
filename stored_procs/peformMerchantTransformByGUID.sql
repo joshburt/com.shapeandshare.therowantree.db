@@ -1,7 +1,6 @@
+DELIMITER $$
 
 DROP procedure IF EXISTS `peformMerchantTransformByGUID`;
-
-DELIMITER $$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `peformMerchantTransformByGUID`(
 	IN target_guid VARCHAR(255),
@@ -94,4 +93,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-

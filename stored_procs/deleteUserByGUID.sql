@@ -1,8 +1,23 @@
+DELIMITER $$
+
+DROP procedure IF EXISTS `deleteUserByGUID`;
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteUserByGUID`(
 	IN target_guid VARCHAR(255)
 )
 BEGIN
-	
+
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+		-- ERROR
+		ROLLBACK;
+    END;
+
+	DECLARE EXIT HANDLER FOR SQLWARNING
+	BEGIN
+		-- WARNING
+		ROLLBACK;
+	END;
     
 	START TRANSACTION;
     
@@ -60,3 +75,6 @@ BEGIN
     
     COMMIT;
 END
+$$
+
+DELIMITER ;

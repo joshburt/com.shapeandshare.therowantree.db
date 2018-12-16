@@ -21,7 +21,8 @@ This project contains the MySQL Schema, and tools required to deploy and maintai
 Requirements
 ------------
 * MySQL 5.7.1+ Server Instance (* or compatable)
-* mysql command line tool (MySQL Workbench)
+* mysql client line tool (MySQL Workbench)
+* mysql_config_editor
 * PowerShell Core (6.0+)
 
 Deploying
@@ -33,9 +34,10 @@ Example invokcation of the database creation script
 /$ pwsh 
 PS> Import-Module ./Update-TRTDatabase.ps1
 PS> $server = 'localhost'
+PS> $port = '3306'
 PS> $database = 'trtdb'
 PS> $user = 'trt_service'
-PS> Update-TRTDatabase -serverName $server -databaseName $database  -userName $user
+PS> Update-TRTDatabase -serverName $server -serverPort $port -databaseName $database -userName $user
 ```
 
 Contributing

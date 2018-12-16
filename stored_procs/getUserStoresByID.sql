@@ -1,6 +1,7 @@
+DELIMITER $$
+
 DROP procedure IF EXISTS `getUserStoresByID`;
 
-DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserStoresByID`(
 	IN target_user_id INT(11)
 )
@@ -15,4 +16,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-

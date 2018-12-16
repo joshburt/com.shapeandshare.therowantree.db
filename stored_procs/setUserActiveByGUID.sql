@@ -1,7 +1,6 @@
+DELIMITER $$
 
 DROP procedure IF EXISTS `setUserActiveByGUID`;
-
-DELIMITER $$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `setUserActiveByGUID`(
 	IN target_guid VARCHAR(255)
@@ -15,4 +14,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-

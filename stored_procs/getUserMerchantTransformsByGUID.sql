@@ -1,6 +1,6 @@
-DROP procedure IF EXISTS `getUserMerchantTransformsByGUID`;
-
 DELIMITER $$
+
+DROP procedure IF EXISTS `getUserMerchantTransformsByGUID`;
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserMerchantTransformsByGUID`(
 	IN target_guid VARCHAR(255)
@@ -20,4 +20,3 @@ ORDER BY st1.store_name;
 END$$
 
 DELIMITER ;
-

@@ -1,7 +1,6 @@
+DELIMITER $$
 
 DROP procedure IF EXISTS `processUserIncome`;
-
-DELIMITER $$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `processUserIncome`(
 	IN target_user_id INT(11)
@@ -46,4 +45,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-
