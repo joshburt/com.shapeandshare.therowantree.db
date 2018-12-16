@@ -7,19 +7,6 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `setUserPopulationByGUID`(
 	IN new_population INT(11)
 ) 
 BEGIN
-
-    DECLARE EXIT HANDLER FOR SQLEXCEPTION
-    BEGIN
-		-- ERROR
-		ROLLBACK;
-    END;
-
-	DECLARE EXIT HANDLER FOR SQLWARNING
-	BEGIN
-		-- WARNING
-		ROLLBACK;
-	END;
-
 	START TRANSACTION;
     UPDATE user u1
 		SET u1.population = new_population

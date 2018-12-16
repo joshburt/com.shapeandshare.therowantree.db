@@ -9,18 +9,6 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `deltaUserStore`(
 ) 
 BEGIN
 
-    DECLARE EXIT HANDLER FOR SQLEXCEPTION
-    BEGIN
-		-- ERROR
-		ROLLBACK;
-    END;
-
-	DECLARE EXIT HANDLER FOR SQLWARNING
-	BEGIN
-		-- WARNING
-		ROLLBACK;
-	END;
-
 	START TRANSACTION;
     
     SET @amount = (SELECT amount FROM store WHERE user_id=my_user_id AND store_id=my_store_id);
