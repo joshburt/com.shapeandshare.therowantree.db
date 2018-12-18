@@ -1,3 +1,32 @@
+function Find-LoginPath {
+    param (
+        # Server Name For The MySQL Instance
+        [Parameter(Mandatory = $false)]
+        [ValidateNotNull()]
+        [String]$loginPath='local',
+
+        [Switch]
+        $displayCmd
+    )
+
+    $foundLoginPath = $false
+
+    try {
+        $mysql_check_creds_cmd = "mysql_config_editor print --login-path $loginPath"
+        if ($displayCmd) { Write-Output $mysql_check_creds_cmd }
+        $result = Invoke-Expression $mysql_check_creds_cmd
+
+        if ($result.length -gt 0){
+            $foundLoginPath = $true
+        }
+    }
+    catch {
+        Write-Error 'Find-LoginPath threw an exception!'
+        Throw $_
+    }
+    return $foundLoginPath
+}
+
 function Update-TRTDatabase {
     # If mysql is missing but the workbench is installed.
     # 1) Then execute this to add the path to ~/.bash_profile:
@@ -27,34 +56,48 @@ function Update-TRTDatabase {
         [ValidateNotNull()]
         [String]$databaseName,
 
-        ## The user account to connect to the database
+        # The user account to connect to the database
         [Parameter(Mandatory = $true)]
         [ValidateNotNull()]
         [String]$userName,
 
+        # The login path to store MySQL credentails at within .mylogin.cnf.
+        [Parameter(Mandatory = $false)]
+        [ValidateNotNull()]
+        [String]$loginPath='local',
+
         [Switch]
-        $displayCmd
+        $displayCmd,
+
+        # Controls updating entries within the .mylogin.cnf if they exist.
+        [Switch]
+        $updateCredentials
     )
     
     begin {
     }
     
     process {
+        # Determine if we need to build the login-path within the local .mylogin.cnf.
+        $loadCreds = Find-LoginPath $loginPath -displayCmd:$displayCmd
+
         # used to store the mysql credentials. the app doesn't allow passing the password through, thus the reason
         # we aren't using a pscredential object anymore.  Also the plain mysql cmd used below would through a warning
         # when passing the creds though.
-        $mysql_set_creds_cmd = "mysql_config_editor set --login-path=local --host=$serverName --port=$serverPort --user=$userName --password"
+        if ($loginPath) {
+            $mysql_set_creds_cmd = "mysql_config_editor set --login-path=$loginPath --host=$serverName --port=$serverPort --user=$userName --password"
         
-        # Set our credentials
-        if ($displayCmd) { Write-Output $mysql_set_creds_cmd }
-        Invoke-Expression $mysql_set_creds_cmd
+            # Set our credentials
+            if ($displayCmd) { Write-Output $mysql_set_creds_cmd }
+            Invoke-Expression $mysql_set_creds_cmd
+        }
 
         $databaseName = "$databaseName"
-        $mysql_cmd = "mysql --login-path=local --database $databaseName"
+        $mysql_cmd = "mysql --login-path=$loginPath --database $databaseName"   
 
         # Create the database
         $database_create_statement = """CREATE DATABASE ````$databaseName```` /*!40100 DEFAULT CHARACTER SET latin1 */;"""
-        $full_create = "mysql --login-path=local --execute=$database_create_statement"
+        $full_create = "mysql --login-path=$loginPath --execute=$database_create_statement"
 
         if ($displayCmd) { Write-Output $full_create }
         Invoke-Expression $full_create
