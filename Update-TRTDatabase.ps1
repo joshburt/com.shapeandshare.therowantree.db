@@ -1,6 +1,5 @@
 function Find-LoginPath {
     param (
-        # Server Name For The MySQL Instance
         [Parameter(Mandatory = $false)]
         [ValidateNotNull()]
         [String]$loginPath='local',
@@ -10,9 +9,9 @@ function Find-LoginPath {
     )
 
     $foundLoginPath = $false
+    $mysql_check_creds_cmd = "mysql_config_editor print --login-path $loginPath"
 
     try {
-        $mysql_check_creds_cmd = "mysql_config_editor print --login-path $loginPath"
         if ($displayCmd) { Write-Output $mysql_check_creds_cmd }
         $result = Invoke-Expression $mysql_check_creds_cmd
 
@@ -25,6 +24,53 @@ function Find-LoginPath {
         Throw $_
     }
     return $foundLoginPath
+}
+
+function Set-MySQLCredentials {
+    param (
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNull()]
+        [String]$loginPath,
+
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNull()]
+        [String]$serverName,
+
+        # Server Port For The MySQL Instance
+        [Parameter(Mandatory = $false)]
+        [ValidateNotNull()]
+        [String]$serverPort='3306',
+
+        # The credentials object to connect to the database
+        [Parameter(Mandatory = $true)]
+        [PSCredential]$credentials,
+
+        [Switch]
+        $displayCmd
+    )
+
+    $userName = $credentials.GetNetworkCredential().UserName
+    $userPassword = $credentials.GetNetworkCredential().Password
+
+    # used to store the mysql credentials. the app doesn't allow passing the password through, thus the reason
+    # we aren't using a pscredential object anymore.  Also the plain mysql cmd used below would through a warning
+    # when passing the creds though.
+    # $mysql_set_creds_cmd = "mysql_config_editor set --login-path=$loginPath --host=$serverName --port=$serverPort --user=$userName"
+    
+    # Set our credentials
+    try {
+        # if ($displayCmd) { Write-Output $mysql_set_creds_cmd }
+        # Invoke-Expression "$mysql_set_creds_cmd $userPassword"
+        $tmpfile = New-TemporaryFile
+        Set-Content -Value $userPassword -Path $tmpfile
+        $result = Start-Process -FilePath "mysql_config_editor" -ArgumentList "set --login-path=$loginPath --host=$serverName --port=$serverPort --user=$userName --password" -RedirectStandardInput $tmpfile
+
+        Remove-Item $tmpfile
+    }
+    catch {
+        Write-Error 'Set-MySQLCredentials threw an exception!'
+        Throw $_
+    }
 }
 
 function Update-TRTDatabase {
@@ -56,12 +102,11 @@ function Update-TRTDatabase {
         [ValidateNotNull()]
         [String]$databaseName,
 
-        # The user account to connect to the database
-        [Parameter(Mandatory = $true)]
-        [ValidateNotNull()]
-        [String]$userName,
+        # The credentials object to connect to the database
+        [Parameter(Mandatory = $false)]
+        [PSCredential]$credentials,
 
-        # The login path to store MySQL credentails at within .mylogin.cnf.
+        # The login path to store MySQL credentials at within .mylogin.cnf.
         [Parameter(Mandatory = $false)]
         [ValidateNotNull()]
         [String]$loginPath='local',
@@ -73,32 +118,32 @@ function Update-TRTDatabase {
         [Switch]
         $updateCredentials
     )
-    
-    begin {
-    }
-    
-    process {
         # Determine if we need to build the login-path within the local .mylogin.cnf.
         $loadCreds = Find-LoginPath $loginPath -displayCmd:$displayCmd
 
-        # used to store the mysql credentials. the app doesn't allow passing the password through, thus the reason
-        # we aren't using a pscredential object anymore.  Also the plain mysql cmd used below would through a warning
-        # when passing the creds though.
-        if ($loginPath) {
-            $mysql_set_creds_cmd = "mysql_config_editor set --login-path=$loginPath --host=$serverName --port=$serverPort --user=$userName --password"
-        
-            # Set our credentials
-            if ($displayCmd) { Write-Output $mysql_set_creds_cmd }
-            Invoke-Expression $mysql_set_creds_cmd
+        if ($loadCreds -eq $false -and $credentials -eq $null){
+            throw 'No credentials provided or stored!'
         }
 
+        if ($loadCreds -ne $true -or $updateCredentials -eq $true){
+            $credObj = @{
+                loginPath = $loginPath
+                serverName = $serverName
+                serverPort = $serverPort
+                credentials = $credentials
+                displayCmd = $displayCmd
+            }
+            Set-MySQLCredentials @credObj
+        }
+
+        # Build the begining of the sql cmds to execute.
         $databaseName = "$databaseName"
         $mysql_cmd = "mysql --login-path=$loginPath --database $databaseName"   
 
         # Create the database
+        Write-Output 'Creating database..'
         $database_create_statement = """CREATE DATABASE ````$databaseName```` /*!40100 DEFAULT CHARACTER SET latin1 */;"""
         $full_create = "mysql --login-path=$loginPath --execute=$database_create_statement"
-
         if ($displayCmd) { Write-Output $full_create }
         Invoke-Expression $full_create
 
@@ -121,8 +166,5 @@ function Update-TRTDatabase {
             $final_cmd = "$mysql_cmd -e ""source $($_.FullName)"" "
             if ($displayCmd) { Write-Output $final_cmd }
             Invoke-Expression $final_cmd
-        }        
-    }
-    end {
-    }
+        }
 }
