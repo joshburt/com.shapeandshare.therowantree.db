@@ -1,4 +1,4 @@
-0.0.3
+0.1.0
 -----
 - Added function to detect pre-existin login-path entry
 - Added function to handle storing the credentials in the login-path
