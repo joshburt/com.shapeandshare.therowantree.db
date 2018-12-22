@@ -113,6 +113,10 @@ function Update-TRTDatabase {
         [ValidateNotNull()]
         [String]$loginPath='local',
 
+        # Drop and recreate database
+        [Switch]
+        $dropAndRecreateDB,
+
         [Switch]
         $displayCmd,
 
@@ -141,9 +145,18 @@ function Update-TRTDatabase {
         $databaseName = "$databaseName"
         $mysql_cmd = "mysql --login-path=$loginPath --database $databaseName"   
 
+
+        if ($dropAndRecreateDB){
+            Write-Output 'Droppping database..'
+            $database_delete_statement = """DROP DATABASE IF EXISTS ````$databaseName````;"""
+            $full_drop_cmd = "mysql --login-path=$loginPath --execute=$database_delete_statement"
+            if ($displayCmd) { Write-Output $full_drop_cmd }
+            Invoke-Expression $full_drop_cmd
+        }
+
         # Create the database
         Write-Output 'Creating database..'
-        $database_create_statement = """CREATE DATABASE ````$databaseName```` /*!40100 DEFAULT CHARACTER SET latin1 */;"""
+        $database_create_statement = """CREATE DATABASE IF NOT EXISTS ````$databaseName```` /*!40100 DEFAULT CHARACTER SET latin1 */;"""
         $full_create = "mysql --login-path=$loginPath --execute=$database_create_statement"
         if ($displayCmd) { Write-Output $full_create }
         Invoke-Expression $full_create
