@@ -1,4 +1,4 @@
-CREATE TABLE `perk_type` (
+CREATE TABLE IF NOT EXISTS `perk_type` (
   `perk_id` int(11) NOT NULL AUTO_INCREMENT,
   `perk_name` varchar(255) NOT NULL,
   `perk_description` varchar(2048) DEFAULT NULL,

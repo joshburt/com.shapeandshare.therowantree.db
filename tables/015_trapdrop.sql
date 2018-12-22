@@ -1,4 +1,4 @@
-CREATE TABLE `trapdrop` (
+CREATE TABLE IF NOT EXISTS `trapdrop` (
   `store_id` int(11) NOT NULL,
   `roll_under` double NOT NULL,
   `message` varchar(255) DEFAULT NULL,

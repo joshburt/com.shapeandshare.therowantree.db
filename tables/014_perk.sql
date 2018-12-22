@@ -1,4 +1,4 @@
-CREATE TABLE `perk` (
+CREATE TABLE IF NOT EXISTS `perk` (
   `user_id` int(11) NOT NULL,
   `perk_id` int(11) NOT NULL,
   UNIQUE KEY `idx_user_id_perk_id` (`user_id`,`perk_id`),

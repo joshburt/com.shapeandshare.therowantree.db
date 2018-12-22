@@ -1,4 +1,4 @@
-CREATE TABLE `user_info` (
+CREATE TABLE IF NOT EXISTS `user_info` (
   `user_id` int(11) NOT NULL,
   `username` varchar(16) NOT NULL,
   `email` varchar(255) DEFAULT NULL,

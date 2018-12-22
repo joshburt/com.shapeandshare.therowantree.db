@@ -1,4 +1,4 @@
-CREATE TABLE `event_type` (
+CREATE TABLE IF NOT EXISTS `event_type` (
   `event_id` int(11) NOT NULL AUTO_INCREMENT,
   `active_feature_id` int(11) NOT NULL,
   `feature_state_id` int(11) NOT NULL,

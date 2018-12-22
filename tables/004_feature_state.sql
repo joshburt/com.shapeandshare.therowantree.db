@@ -1,4 +1,4 @@
-CREATE TABLE `feature_state` (
+CREATE TABLE IF NOT EXISTS `feature_state` (
   `feature_state_id` int(11) NOT NULL AUTO_INCREMENT,
   `feature_id` int(11) NOT NULL,
   `state_index` int(11) NOT NULL,

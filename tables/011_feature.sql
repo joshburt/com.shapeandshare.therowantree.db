@@ -1,4 +1,4 @@
-CREATE TABLE `feature` (
+CREATE TABLE IF NOT EXISTS `feature` (
   `user_id` int(11) NOT NULL,
   `feature_id` int(11) NOT NULL DEFAULT '1',
   UNIQUE KEY `unique_tuples` (`user_id`,`feature_id`),

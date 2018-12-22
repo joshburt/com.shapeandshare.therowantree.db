@@ -1,4 +1,4 @@
-CREATE TABLE `store_type` (
+CREATE TABLE IF NOT EXISTS `store_type` (
   `store_id` int(11) NOT NULL AUTO_INCREMENT,
   `store_name` varchar(255) NOT NULL,
   `store_description` varchar(2048) DEFAULT NULL,

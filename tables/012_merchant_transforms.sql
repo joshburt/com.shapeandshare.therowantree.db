@@ -1,4 +1,4 @@
-CREATE TABLE `merchant_transforms` (
+CREATE TABLE IF NOT EXISTS `merchant_transforms` (
   `to_store_id` int(11) NOT NULL,
   `from_store_id` int(11) NOT NULL,
   `amount` int(11) NOT NULL,

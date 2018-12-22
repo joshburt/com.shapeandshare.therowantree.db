@@ -1,4 +1,4 @@
-CREATE TABLE `income_source` (
+CREATE TABLE IF NOT EXISTS `income_source` (
   `income_source_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
   `amount` float NOT NULL,

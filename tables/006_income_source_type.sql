@@ -1,4 +1,4 @@
-CREATE TABLE `income_source_type` (
+CREATE TABLE IF NOT EXISTS `income_source_type` (
   `income_source_id` int(11) NOT NULL AUTO_INCREMENT,
   `income_source_name` varchar(255) NOT NULL,
   `income_source_description` varchar(2048) DEFAULT NULL,
