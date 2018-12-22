@@ -2,7 +2,7 @@ DELIMITER $$
 
 DROP procedure IF EXISTS `applyTimeQuantum`;
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `applyTimeQuantum`()
+CREATE PROCEDURE `applyTimeQuantum`()
 BEGIN
 	-- Update income for all active users
     DECLARE _user_id INT(11);

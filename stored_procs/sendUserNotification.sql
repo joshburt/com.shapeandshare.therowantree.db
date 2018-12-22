@@ -2,7 +2,7 @@ DELIMITER $$
 
 DROP procedure IF EXISTS `sendUserNotification`;
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sendUserNotification`(
+CREATE PROCEDURE `sendUserNotification`(
 	IN target_user_id INT(11),
     IN target_notification VARCHAR(2048)
 )

@@ -2,7 +2,7 @@ DELIMITER $$
 
 DROP procedure IF EXISTS `deltaUserStore`;
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `deltaUserStore`(
+CREATE PROCEDURE `deltaUserStore`(
 	IN `my_user_id` INT(11),
 	IN `my_store_id` INT(11),
 	IN `my_amount` FLOAT

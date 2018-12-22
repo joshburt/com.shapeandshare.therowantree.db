@@ -2,7 +2,7 @@ DELIMITER $$
 
 DROP procedure IF EXISTS `transportUserByGUID`;
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `transportUserByGUID`(
+CREATE PROCEDURE `transportUserByGUID`(
 	IN target_guid VARCHAR(255),
     IN target_feature_name VARCHAR(255)
 )

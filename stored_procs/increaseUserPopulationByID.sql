@@ -2,7 +2,7 @@ DELIMITER $$
 
 DROP procedure IF EXISTS `increaseUserPopulationByID`;
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `increaseUserPopulationByID`(
+CREATE PROCEDURE `increaseUserPopulationByID`(
 	IN target_user_id INT(11)
 )
 BEGIN

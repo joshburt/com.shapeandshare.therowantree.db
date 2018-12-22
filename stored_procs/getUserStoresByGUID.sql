@@ -2,7 +2,7 @@ DELIMITER $$
 
 DROP procedure IF EXISTS `getUserStoresByGUID`;
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserStoresByGUID`(
+CREATE PROCEDURE `getUserStoresByGUID`(
 	IN target_guid VARCHAR(255)
 ) 
 BEGIN

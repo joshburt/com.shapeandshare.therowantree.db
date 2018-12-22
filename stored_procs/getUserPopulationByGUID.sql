@@ -2,7 +2,7 @@ DELIMITER $$
 
 DROP procedure IF EXISTS `getUserPopulationByGUID`;
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserPopulationByGUID`(
+CREATE PROCEDURE `getUserPopulationByGUID`(
 	IN target_guid VARCHAR(255)
 ) 
 BEGIN

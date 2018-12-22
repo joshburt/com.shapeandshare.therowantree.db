@@ -2,7 +2,7 @@ DELIMITER $$
 
 DROP procedure IF EXISTS `canDeltaStore`;
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `canDeltaStore`(
+CREATE PROCEDURE `canDeltaStore`(
 	IN target_user_id INT(11),
 	IN target_store_id INT(11),
 	IN target_amount FLOAT,

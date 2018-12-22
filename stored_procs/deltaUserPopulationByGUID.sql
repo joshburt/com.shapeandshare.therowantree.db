@@ -2,7 +2,7 @@ DELIMITER $$
 
 DROP procedure IF EXISTS `deltaUserPopulationByGUID`;
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `deltaUserPopulationByGUID`(
+CREATE PROCEDURE `deltaUserPopulationByGUID`(
 	IN target_guid VARCHAR(255),
     IN amount INT(11)
 ) 

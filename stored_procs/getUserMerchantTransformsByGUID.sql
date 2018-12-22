@@ -2,7 +2,7 @@ DELIMITER $$
 
 DROP procedure IF EXISTS `getUserMerchantTransformsByGUID`;
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserMerchantTransformsByGUID`(
+CREATE PROCEDURE `getUserMerchantTransformsByGUID`(
 	IN target_guid VARCHAR(255)
 ) 
 BEGIN

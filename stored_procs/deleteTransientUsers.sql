@@ -2,7 +2,7 @@ DELIMITER $$
 
 DROP procedure IF EXISTS `deleteTransientUsers`;
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteTransientUsers`()
+CREATE PROCEDURE `deleteTransientUsers`()
 BEGIN
 	-- removes stale users from the system when fired.
     
