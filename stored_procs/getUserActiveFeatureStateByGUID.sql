@@ -2,7 +2,7 @@ DELIMITER $$
 
 DROP procedure IF EXISTS `getUserActiveFeatureStateByGUID`;
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserActiveFeatureStateByGUID`(
+CREATE PROCEDURE `getUserActiveFeatureStateByGUID`(
 	IN target_guid VARCHAR(255)
 )
 BEGIN

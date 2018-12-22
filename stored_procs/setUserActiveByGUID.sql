@@ -2,7 +2,7 @@ DELIMITER $$
 
 DROP procedure IF EXISTS `setUserActiveByGUID`;
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `setUserActiveByGUID`(
+CREATE PROCEDURE `setUserActiveByGUID`(
 	IN target_guid VARCHAR(255)
 ) 
 BEGIN

@@ -1,4 +1,4 @@
-CREATE TABLE `store` (
+CREATE TABLE IF NOT EXISTS `store` (
   `user_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
   `amount` float NOT NULL DEFAULT '0',

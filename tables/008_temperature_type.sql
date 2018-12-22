@@ -1,4 +1,4 @@
-CREATE TABLE `temperature_type` (
+CREATE TABLE IF NOT EXISTS `temperature_type` (
   `temperature_id` int(11) NOT NULL AUTO_INCREMENT,
   `temperature_name` varchar(255) NOT NULL,
   `temperature_description` varchar(2048) DEFAULT NULL,

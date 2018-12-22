@@ -2,7 +2,7 @@ DELIMITER $$
 
 DROP procedure IF EXISTS `getUserIncomeByGUID`;
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserIncomeByGUID`(
+CREATE PROCEDURE `getUserIncomeByGUID`(
 	IN target_guid VARCHAR(255)
 ) 
 BEGIN

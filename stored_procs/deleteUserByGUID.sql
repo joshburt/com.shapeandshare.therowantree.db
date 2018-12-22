@@ -2,7 +2,7 @@ DELIMITER $$
 
 DROP procedure IF EXISTS `deleteUserByGUID`;
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteUserByGUID`(
+CREATE PROCEDURE `deleteUserByGUID`(
 	IN target_guid VARCHAR(255)
 )
 BEGIN

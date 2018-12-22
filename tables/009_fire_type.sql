@@ -1,4 +1,4 @@
-CREATE TABLE `fire_type` (
+CREATE TABLE IF NOT EXISTS `fire_type` (
   `fire_id` int(11) NOT NULL AUTO_INCREMENT,
   `fire_name` varchar(255) NOT NULL,
   `fire_description` varchar(2048) DEFAULT NULL,

@@ -1,4 +1,4 @@
-CREATE TABLE `user_game_state` (
+CREATE TABLE IF NOT EXISTS `user_game_state` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `active_feature` int(11) NOT NULL DEFAULT '1',
   `game_temperature_id` int(11) NOT NULL DEFAULT '1',

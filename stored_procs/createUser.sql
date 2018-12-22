@@ -2,7 +2,7 @@ DELIMITER $$
 
 DROP procedure IF EXISTS `createUser`;
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `createUser`()
+CREATE PROCEDURE `createUser`()
 BEGIN
 	-- Creates a new user with a new random UUID
 	SET @new_guid = (SELECT UUID());
