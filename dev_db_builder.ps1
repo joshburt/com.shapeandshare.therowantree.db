@@ -1,6 +1,6 @@
 Import-Module ./Update-TRTDatabase.ps1 -Force
-$server = 'localhost'
-$port = '6603'
+$server = '0.0.0.0'
 $database = 'trtdb'
-# $creds = Get-Credential
-Update-TRTDatabase -serverName $server -serverPort $port -databaseName $database # -credentials $creds -updateCredentials -displayCmd
+$userName = 'root'
+$loginPath = 'trtdb'
+Update-TRTDatabase -loginPath $loginPath -serverName $server -databaseName $database -userName $userName -updateCredentials
