@@ -1,7 +1,10 @@
 CREATE TABLE IF NOT EXISTS `user_income` (
+  `user_income_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `income_source_id` int(11) NOT NULL,
   `amount` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`user_income_id`),
+  UNIQUE KEY `user_income_id_UNIQUE` (`user_income_id`),
   UNIQUE KEY `fk_unique_combos` (`user_id`,`income_source_id`),
   KEY `fk_user_id_user_user_income_idx` (`user_id`),
   KEY `fk_income_source_id_income_source_type_user_income_idx` (`income_source_id`),
