@@ -1,6 +1,9 @@
 CREATE TABLE IF NOT EXISTS `feature` (
+  `user_feature_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `feature_id` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`user_feature_id`),
+  UNIQUE KEY `user_feature_id_UNIQUE` (`user_feature_id`),
   UNIQUE KEY `unique_tuples` (`user_id`,`feature_id`),
   KEY `fk_feature_id_idx` (`feature_id`),
   KEY `fk_user_id_idx` (`user_id`),
