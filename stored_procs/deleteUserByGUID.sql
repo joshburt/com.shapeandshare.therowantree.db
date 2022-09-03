@@ -19,7 +19,7 @@ BEGIN
 			FROM perk p1
 				JOIN user u1
 					ON u1.user_id = p1.user_id
-			WHERE u1.user_id = target_guid;
+			WHERE u1.user_id = p1.user_id;
 
 		DELETE s1 
 			FROM store s1
