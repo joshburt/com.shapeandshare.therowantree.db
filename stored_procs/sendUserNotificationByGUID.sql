@@ -3,7 +3,7 @@ DELIMITER $$
 DROP procedure IF EXISTS `sendUserNotificationByGUID`;
 
 CREATE PROCEDURE `sendUserNotificationByGUID`(
-	IN target_user_guid INT(11),
+	IN target_user_guid VARCHAR(255),
     IN target_notification VARCHAR(2048)
 )
 BEGIN
