@@ -1,6 +1,6 @@
 DELIMITER $$
 
-DROP procedure IF EXISTS `sendUserNotification`;
+DROP procedure IF EXISTS `sendUserNotificationByGUID`;
 
 CREATE PROCEDURE `sendUserNotification`(
 	IN target_user_guid INT(11),
