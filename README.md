@@ -13,6 +13,7 @@ This project contains the MySQL Schema, and tools required to deploy and maintai
 ./tables
 ./the dawn chant
 ```
+
 * model - contains the MySQL Workbech model for the project.
 * stored_procs - contains the create scripts for the stored procedures.
 * tables - contains the create scripts for the tables.
@@ -20,6 +21,7 @@ This project contains the MySQL Schema, and tools required to deploy and maintai
 
 Requirements
 ------------
+
 * MySQL 5.7.1+ Server Instance (* or compatable)
 * mysql client line tool (MySQL Workbench)
 * mysql_config_editor
@@ -30,6 +32,7 @@ Deploying
 The scripts to create the database require PowerShell 6.0+ (pwsh) and MySQL command line tool (mysql) to be present on the system.
 
 Example invokcation of the database creation script
+
 ```
 /$ pwsh 
 PS> Import-Module ./Update-TRTDatabase.ps1
@@ -42,6 +45,7 @@ PS> Update-TRTDatabase -serverName $server -serverPort $port -databaseName $data
 
 Contributing
 ------------
+
 1. Fork the repository on Github
 2. Create a named feature branch (like `add_component_x`)
 3. Write your change

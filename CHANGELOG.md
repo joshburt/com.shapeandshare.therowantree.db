@@ -1,5 +1,6 @@
 0.1.0
 -----
+
 - Added function to detect pre-existin login-path entry
 - Added function to handle storing the credentials in the login-path
 - Server port type changes from string to integer
@@ -15,6 +16,7 @@
 
 0.0.2
 -----
+
 - Added some additional comments
 - Added the ability to specify a port number for the remote server.
 - Add missing delimiter changes within some of the stored procedures
@@ -23,4 +25,5 @@
 
 0.0.1
 -----
+
 - Initial Release
